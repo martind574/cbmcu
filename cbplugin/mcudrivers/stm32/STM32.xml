@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<DeviceList family="STM32" driver="STM32.dll">
+
+    <Device name="STM32F101T4">
+        <Flash size="16k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="4k"></RAM>
+        <Description>Access line: 36 MHz CPU speed, EMI (100 and 144pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32 kHz oscillator, -40 to 85 °C</Description>
+    </Device>
+
+    <Device name="STM32F101T6">
+        <Flash size="32k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="6k"></RAM>
+        <Description>Access line: 36 MHz CPU speed, EMI (100 and 144pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32 kHz oscillator, -40 to 85 °C</Description>
+    </Device>
+
+    <Device name="STM32F101T8">
+        <Flash size="64k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="10k"></RAM>
+         <Description>Access line: 36 MHz CPU speed, EMI (100 and 144pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32 kHz oscillator, -40 to 85 °C</Description>
+    </Device>
+
+    <Device name="STM32F101C4">
+        <Flash size="16k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="4k"></RAM>
+        <Description>Access line: 36 MHz CPU speed, EMI (100 and 144pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32 kHz oscillator, -40 to 85 °C</Description>
+    </Device>
+
+    <Device name="STM32F101C4">
+        <Flash size="16k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="4k"></RAM>
+        <Description>Access line: 36 MHz CPU speed, EMI (100 and 144pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32 kHz oscillator, -40 to 85 °C</Description>
+    </Device>
+
+    <Device name="STM32F101C6">
+        <Flash size="32k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="6k"></RAM>
+        <Description>Access line: 36 MHz CPU speed, EMI (100 and 144pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32 kHz oscillator, -40 to 85 °C</Description>
+    </Device>
+
+    <Device name="STM32F101C8">
+        <Flash size="64k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="10k"></RAM>
+        <Description>Access line: 36 MHz CPU speed, EMI (100 and 144pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32 kHz oscillator, -40 to 85 °C</Description>
+   </Device>
+
+    <Device name="STM32F101CB">
+        <Flash size="128k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="16k"></RAM>
+        <Description>Access line: 36 MHz CPU speed, EMI (100 and 144pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32 kHz oscillator, -40 to 85 °C</Description>
+    </Device>
+
+    <Device name="STM32F101R4">
+        <Flash size="16k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="4k"></RAM>
+        <Description>Access line: 36 MHz CPU speed, EMI (100 and 144pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32 kHz oscillator, -40 to 85 °C</Description>
+    </Device>
+
+    <Device name="STM32F101R6">
+        <Flash size="32k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="6k"></RAM>
+        <Description>Access line: 36 MHz CPU speed, EMI (100 and 144pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32 kHz oscillator, -40 to 85 °C</Description>
+    </Device>
+
+    <Device name="STM32F101R8">
+        <Flash size="64k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="10k"></RAM>
+        <Description>Access line: 36 MHz CPU speed, EMI (100 and 144pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32 kHz oscillator, -40 to 85 °C</Description>
+    </Device>
+
+    <Device name="STM32F101RB">
+        <Flash size="128k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="16k"></RAM>
+        <Description>Access line: 36 MHz CPU speed, EMI (100 and 144pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32 kHz oscillator, -40 to 85 °C</Description>
+    </Device>
+
+    <Device name="STM32F101RC">
+        <Flash size="256k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="32k"></RAM>
+        <Description>Access line: 36 MHz CPU speed, EMI (100 and 144pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32 kHz oscillator, -40 to 85 °C</Description>
+    </Device>
+
+    <Device name="STM32F101RD">
+        <Flash size="384k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="48k"></RAM>
+         <Description>Access line: 36 MHz CPU speed, EMI (100 and 144pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32 kHz oscillator, -40 to 85 °C</Description>
+    </Device>
+
+    <Device name="STM32F101RE">
+        <Flash size="512k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="48k"></RAM>
+        <Description>Access line: 36 MHz CPU speed, EMI (100 and 144pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32 kHz oscillator, -40 to 85 °C</Description>
+    </Device>
+
+    <Device name="STM32F101V8">
+        <Flash size="64k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="10k"></RAM>
+        <Description>Access line: 36 MHz CPU speed, EMI (100 and 144pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32 kHz oscillator, -40 to 85 °C</Description>
+    </Device>
+
+    <Device name="STM32F101VB">
+        <Flash size="128k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="16k"></RAM>
+        <Description>Access line: 36 MHz CPU speed, EMI (100 and 144pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32 kHz oscillator, -40 to 85 °C</Description>
+    </Device>
+
+    <Device name="STM32F101VC">
+        <Flash size="256k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="32k"></RAM>
+        <Description>Access line: 36 MHz CPU speed, EMI (100 and 144pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32 kHz oscillator, -40 to 85 °C</Description>
+    </Device>
+
+    <Device name="STM32F101VD">
+        <Flash size="384k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="48k"></RAM>
+        <Description>Access line: 36 MHz CPU speed, EMI (100 and 144pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32 kHz oscillator, -40 to 85 °C</Description>
+    </Device>
+
+    <Device name="STM32F101VE">
+        <Flash size="512k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="48k"></RAM>
+        <Description>Access line: 36 MHz CPU speed, EMI (100 and 144pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32 kHz oscillator, -40 to 85 °C</Description>
+    </Device>
+
+    <Device name="STM32F101ZC">
+        <Flash size="256k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="32k"></RAM>
+        <Description>Access line: 36 MHz CPU speed, EMI (100 and 144pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32 kHz oscillator, -40 to 85 °C</Description>
+    </Device>
+
+    <Device name="STM32F101ZD">
+        <Flash size="384k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="48k"></RAM>
+        <Description>Access line: 36 MHz CPU speed, EMI (100 and 144pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32 kHz oscillator, -40 to 85 °C</Description>
+    </Device>
+
+    <Device name="STM32F101ZD">
+        <Flash size="384k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="48k"></RAM>
+        <Description>Access line: 36 MHz CPU speed, EMI (100 and 144pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32 kHz oscillator, -40 to 85 °C</Description>
+    </Device>
+
+    <Device name="STM32F101ZE">
+        <Flash size="512k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="48k"></RAM>
+        <Description>Access line: 36 MHz CPU speed, EMI (100 and 144pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32 kHz oscillator, -40 to 85 °C</Description>
+    </Device>
+
+    <Device name="STM32F102C4">
+        <Flash size="16k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="4k"></RAM>
+        <Description>USB Access line: 48 MHz CPU speed, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32 kHz oscillator, -40 to 85 °C</Description>
+    </Device>
+
+    <Device name="STM32F102C6">
+        <Flash size="32k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="6k"></RAM>
+        <Description>USB Access line: 48 MHz CPU speed, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32 kHz oscillator, -40 to 85 °C</Description>
+    </Device>
+
+    <Device name="STM32F102C8">
+        <Flash size="64k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="10k"></RAM>
+        <Description>USB Access line: 48 MHz CPU speed, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32 kHz oscillator, -40 to 85 °C</Description>
+    </Device>
+
+    <Device name="STM32F102CB">
+        <Flash size="128k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="16k"></RAM>
+        <Description>USB Access line: 48 MHz CPU speed, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32 kHz oscillator, -40 to 85 °C</Description>
+    </Device>
+
+    <Device name="STM32F102R4">
+        <Flash size="16k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="4k"></RAM>
+        <Description>USB Access line: 48 MHz CPU speed, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32 kHz oscillator, -40 to 85 °C</Description>
+    </Device>
+
+    <Device name="STM32F102R6">
+        <Flash size="32k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="6k"></RAM>
+        <Description>USB Access line: 48 MHz CPU speed, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32 kHz oscillator, -40 to 85 °C</Description>
+    </Device>
+
+    <Device name="STM32F102R8">
+        <Flash size="64k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="10k"></RAM>
+        <Description>USB Access line: 48 MHz CPU speed, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32 kHz oscillator, -40 to 85 °C</Description>
+    </Device>
+
+    <Device name="STM32F102RB">
+        <Flash size="128k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="16k"></RAM>
+        <Description>USB Access line: 48 MHz CPU speed, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32 kHz oscillator, -40 to 85 °C</Description>
+    </Device>
+
+    <Device name="STM32F103T4">
+        <Flash size="16k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="6k"></RAM>
+        <Description>Performance line: 72 MHz CPU speed, EMI (100 and 144 pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32kHz oscillator, 1 x high-speed USART 4Mbit/s, motor control oriented PWM, 3 x ADC (triple sample and hold capability), -40 to 85 °C or -40 to 105 °C</Description>
+    </Device>
+
+    <Device name="STM32F103T6">
+        <Flash size="32k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="10k"></RAM>
+        <Description>Performance line: 72 MHz CPU speed, EMI (100 and 144 pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32kHz oscillator, 1 x high-speed USART 4Mbit/s, motor control oriented PWM, 3 x ADC (triple sample and hold capability), -40 to 85 °C or -40 to 105 °C</Description>
+    </Device>
+
+    <Device name="STM32F103T8">
+        <Flash size="64k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="20k"></RAM>
+        <Description>Performance line: 72 MHz CPU speed, EMI (100 and 144 pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32kHz oscillator, 1 x high-speed USART 4Mbit/s, motor control oriented PWM, 3 x ADC (triple sample and hold capability), -40 to 85 °C or -40 to 105 °C</Description>
+    </Device>
+
+    <Device name="STM32F103C4">
+        <Flash size="16k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="6k"></RAM>
+        <Description>Performance line: 72 MHz CPU speed, EMI (100 and 144 pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32kHz oscillator, 1 x high-speed USART 4Mbit/s, motor control oriented PWM, 3 x ADC (triple sample and hold capability), -40 to 85 °C or -40 to 105 °C</Description>
+    </Device>
+
+   <Device name="STM32F103C6">
+        <Flash size="32k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="10k"></RAM>
+        <Description>Performance line: 72 MHz CPU speed, EMI (100 and 144 pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32kHz oscillator, 1 x high-speed USART 4Mbit/s, motor control oriented PWM, 3 x ADC (triple sample and hold capability), -40 to 85 °C or -40 to 105 °C</Description>
+    </Device>
+
+   <Device name="STM32F103C8">
+        <Flash size="64k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="20k"></RAM>
+        <Description>Performance line: 72 MHz CPU speed, EMI (100 and 144 pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32kHz oscillator, 1 x high-speed USART 4Mbit/s, motor control oriented PWM, 3 x ADC (triple sample and hold capability), -40 to 85 °C or -40 to 105 °C</Description>
+    </Device>
+
+   <Device name="STM32F103CB">
+        <Flash size="128k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="20k"></RAM>
+        <Description>Performance line: 72 MHz CPU speed, EMI (100 and 144 pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32kHz oscillator, 1 x high-speed USART 4Mbit/s, motor control oriented PWM, 3 x ADC (triple sample and hold capability), -40 to 85 °C or -40 to 105 °C</Description>
+    </Device>
+
+   <Device name="STM32F103R4">
+        <Flash size="16k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="6k"></RAM>
+        <Description>Performance line: 72 MHz CPU speed, EMI (100 and 144 pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32kHz oscillator, 1 x high-speed USART 4Mbit/s, motor control oriented PWM, 3 x ADC (triple sample and hold capability), -40 to 85 °C or -40 to 105 °C</Description>
+    </Device>
+
+    <Device name="STM32F103R6">
+        <Flash size="32k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="10k"></RAM>
+        <Description>Performance line: 72 MHz CPU speed, EMI (100 and 144 pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32kHz oscillator, 1 x high-speed USART 4Mbit/s, motor control oriented PWM, 3 x ADC (triple sample and hold capability), -40 to 85 °C or -40 to 105 °C</Description>
+    </Device>
+
+    <Device name="STM32F103R8">
+        <Flash size="64k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="20k"></RAM>
+        <Description>Performance line: 72 MHz CPU speed, EMI (100 and 144 pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32kHz oscillator, 1 x high-speed USART 4Mbit/s, motor control oriented PWM, 3 x ADC (triple sample and hold capability), -40 to 85 °C or -40 to 105 °C</Description>
+    </Device>
+
+    <Device name="STM32F103RB">
+        <Flash size="128k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="20k"></RAM>
+        <Description>Performance line: 72 MHz CPU speed, EMI (100 and 144 pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32kHz oscillator, 1 x high-speed USART 4Mbit/s, motor control oriented PWM, 3 x ADC (triple sample and hold capability), -40 to 85 °C or -40 to 105 °C</Description>
+    </Device>
+
+    <Device name="STM32F103RC">
+        <Flash size="256k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="48k"></RAM>
+        <Description>Performance line: 72 MHz CPU speed, EMI (100 and 144 pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32kHz oscillator, 1 x high-speed USART 4Mbit/s, motor control oriented PWM, 3 x ADC (triple sample and hold capability), -40 to 85 °C or -40 to 105 °C</Description>
+    </Device>
+
+    <Device name="STM32F103RD">
+        <Flash size="384k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="64k"></RAM>
+        <Description>Performance line: 72 MHz CPU speed, EMI (100 and 144 pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32kHz oscillator, 1 x high-speed USART 4Mbit/s, motor control oriented PWM, 3 x ADC (triple sample and hold capability), -40 to 85 °C or -40 to 105 °C</Description>
+    </Device>
+
+    <Device name="STM32F103RE">
+        <Flash size="512k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="64k"></RAM>
+        <Description>Performance line: 72 MHz CPU speed, EMI (100 and 144 pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32kHz oscillator, 1 x high-speed USART 4Mbit/s, motor control oriented PWM, 3 x ADC (triple sample and hold capability), -40 to 85 °C or -40 to 105 °C</Description>
+    </Device>
+
+    <Device name="STM32F103V8">
+        <Flash size="64k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="20k"></RAM>
+        <Description>Performance line: 72 MHz CPU speed, EMI (100 and 144 pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32kHz oscillator, 1 x high-speed USART 4Mbit/s, motor control oriented PWM, 3 x ADC (triple sample and hold capability), -40 to 85 °C or -40 to 105 °C</Description>
+    </Device>
+
+    <Device name="STM32F103VB">
+        <Flash size="128k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="20k"></RAM>
+        <Description>Performance line: 72 MHz CPU speed, EMI (100 and 144 pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32kHz oscillator, 1 x high-speed USART 4Mbit/s, motor control oriented PWM, 3 x ADC (triple sample and hold capability), -40 to 85 °C or -40 to 105 °C</Description>
+    </Device>
+
+    <Device name="STM32F103VC">
+        <Flash size="256k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="48k"></RAM>
+        <Description>Performance line: 72 MHz CPU speed, EMI (100 and 144 pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32kHz oscillator, 1 x high-speed USART 4Mbit/s, motor control oriented PWM, 3 x ADC (triple sample and hold capability), -40 to 85 °C or -40 to 105 °C</Description>
+    </Device>
+
+    <Device name="STM32F103VD">
+        <Flash size="384k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="64k"></RAM>
+        <Description>Performance line: 72 MHz CPU speed, EMI (100 and 144 pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32kHz oscillator, 1 x high-speed USART 4Mbit/s, motor control oriented PWM, 3 x ADC (triple sample and hold capability), -40 to 85 °C or -40 to 105 °C</Description>
+    </Device>
+
+    <Device name="STM32F103VE">
+        <Flash size="512k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="64k"></RAM>
+        <Description>Performance line: 72 MHz CPU speed, EMI (100 and 144 pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32kHz oscillator, 1 x high-speed USART 4Mbit/s, motor control oriented PWM, 3 x ADC (triple sample and hold capability), -40 to 85 °C or -40 to 105 °C</Description>
+    </Device>
+
+    <Device name="STM32F103ZC">
+        <Flash size="256k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="48k"></RAM>
+        <Description>Performance line: 72 MHz CPU speed, EMI (100 and 144 pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32kHz oscillator, 1 x high-speed USART 4Mbit/s, motor control oriented PWM, 3 x ADC (triple sample and hold capability), -40 to 85 °C or -40 to 105 °C</Description>
+    </Device>
+
+    <Device name="STM32F103ZD">
+        <Flash size="384k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="64k"></RAM>
+        <Description>Performance line: 72 MHz CPU speed, EMI (100 and 144 pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32kHz oscillator, 1 x high-speed USART 4Mbit/s, motor control oriented PWM, 3 x ADC (triple sample and hold capability), -40 to 85 °C or -40 to 105 °C</Description>
+    </Device>
+
+    <Device name="STM32F103ZE">
+        <Flash size="512k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="64k"></RAM>
+        <Description>Performance line: 72 MHz CPU speed, EMI (100 and 144 pins), 2-channel DAC, Vbat pin, low-power features, embedded POR, PDR and PVD, 8 MHz and 40 kHz internal RC oscillator, 4-16 MHz main oscillator, dedicated 32kHz oscillator, 1 x high-speed USART 4Mbit/s, motor control oriented PWM, 3 x ADC (triple sample and hold capability), -40 to 85 °C or -40 to 105 °C</Description>
+    </Device>
+
+    <Device name="STM32F105R8">
+        <Flash size="64k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="20k"></RAM>
+        <Description>Connectivity line: 72 MHz CPU speed, 2-channel DAC, Vbat pin, low power features, embedded POR, PDR and PVD, internal RC 8MHz and 40kHz internal RC oscillator, 3-25 MHz main oscillator, dedicated 32 kHz oscillator, 1 x high-speed USART 4.5 Mbit/s, motor control oriented PWM, 2 x ADC(double sample and hold capability), advanced PLL schemes for audio class I2S communication, -40 to 85 °C or -40 to 105 °C</Description>
+    </Device>
+
+    <Device name="STM32F105R8">
+        <Flash size="64k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="20k"></RAM>
+        <Description>Connectivity line: 72 MHz CPU speed, 2-channel DAC, Vbat pin, low power features, embedded POR, PDR and PVD, internal RC 8MHz and 40kHz internal RC oscillator, 3-25 MHz main oscillator, dedicated 32 kHz oscillator, 1 x high-speed USART 4.5 Mbit/s, motor control oriented PWM, 2 x ADC(double sample and hold capability), advanced PLL schemes for audio class I2S communication, -40 to 85 °C or -40 to 105 °C</Description>
+    </Device>
+
+    <Device name="STM32F105V8">
+        <Flash size="64k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="20k"></RAM>
+        <Description>Connectivity line: 72 MHz CPU speed, 2-channel DAC, Vbat pin, low power features, embedded POR, PDR and PVD, internal RC 8MHz and 40kHz internal RC oscillator, 3-25 MHz main oscillator, dedicated 32 kHz oscillator, 1 x high-speed USART 4.5 Mbit/s, motor control oriented PWM, 2 x ADC(double sample and hold capability), advanced PLL schemes for audio class I2S communication, -40 to 85 °C or -40 to 105 °C</Description>
+    </Device>
+
+    <Device name="STM32F105RB">
+        <Flash size="128k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="32k"></RAM>
+        <Description>Connectivity line: 72 MHz CPU speed, 2-channel DAC, Vbat pin, low power features, embedded POR, PDR and PVD, internal RC 8MHz and 40kHz internal RC oscillator, 3-25 MHz main oscillator, dedicated 32 kHz oscillator, 1 x high-speed USART 4.5 Mbit/s, motor control oriented PWM, 2 x ADC(double sample and hold capability), advanced PLL schemes for audio class I2S communication, -40 to 85 °C or -40 to 105 °C</Description>
+    </Device>
+
+    <Device name="STM32F105VB">
+        <Flash size="128k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="32k"></RAM>
+        <Description>Connectivity line: 72 MHz CPU speed, 2-channel DAC, Vbat pin, low power features, embedded POR, PDR and PVD, internal RC 8MHz and 40kHz internal RC oscillator, 3-25 MHz main oscillator, dedicated 32 kHz oscillator, 1 x high-speed USART 4.5 Mbit/s, motor control oriented PWM, 2 x ADC(double sample and hold capability), advanced PLL schemes for audio class I2S communication, -40 to 85 °C or -40 to 105 °C</Description>
+    </Device>
+
+    <Device name="STM32F105RC">
+        <Flash size="256k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="64k"></RAM>
+        <Description>Connectivity line: 72 MHz CPU speed, 2-channel DAC, Vbat pin, low power features, embedded POR, PDR and PVD, internal RC 8MHz and 40kHz internal RC oscillator, 3-25 MHz main oscillator, dedicated 32 kHz oscillator, 1 x high-speed USART 4.5 Mbit/s, motor control oriented PWM, 2 x ADC(double sample and hold capability), advanced PLL schemes for audio class I2S communication, -40 to 85 °C or -40 to 105 °C</Description>
+    </Device>
+
+    <Device name="STM32F105VC">
+        <Flash size="256k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="64k"></RAM>
+        <Description>Connectivity line: 72 MHz CPU speed, 2-channel DAC, Vbat pin, low power features, embedded POR, PDR and PVD, internal RC 8MHz and 40kHz internal RC oscillator, 3-25 MHz main oscillator, dedicated 32 kHz oscillator, 1 x high-speed USART 4.5 Mbit/s, motor control oriented PWM, 2 x ADC(double sample and hold capability), advanced PLL schemes for audio class I2S communication, -40 to 85 °C or -40 to 105 °C</Description>
+    </Device>
+
+    <Device name="STM32F107RB">
+        <Flash size="128k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="48k"></RAM>
+        <Description>Connectivity line: 72 MHz CPU speed, 2-channel DAC, Vbat pin, low power features, embedded POR, PDR and PVD, internal RC 8MHz and 40kHz internal RC oscillator, 3-25 MHz main oscillator, dedicated 32 kHz oscillator, 1 x high-speed USART 4.5 Mbit/s, motor control oriented PWM, 2 x ADC(double sample and hold capability), advanced PLL schemes for audio class I2S communication, -40 to 85 °C or -40 to 105 °C</Description>
+    </Device>
+
+    <Device name="STM32F107VB">
+        <Flash size="128k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="48k"></RAM>
+        <Description>Connectivity line: 72 MHz CPU speed, 2-channel DAC, Vbat pin, low power features, embedded POR, PDR and PVD, internal RC 8MHz and 40kHz internal RC oscillator, 3-25 MHz main oscillator, dedicated 32 kHz oscillator, 1 x high-speed USART 4.5 Mbit/s, motor control oriented PWM, 2 x ADC(double sample and hold capability), advanced PLL schemes for audio class I2S communication, -40 to 85 °C or -40 to 105 °C</Description>
+    </Device>
+
+    <Device name="STM32F107RC">
+        <Flash size="256k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="64k"></RAM>
+        <Description>Connectivity line: 72 MHz CPU speed, 2-channel DAC, Vbat pin, low power features, embedded POR, PDR and PVD, internal RC 8MHz and 40kHz internal RC oscillator, 3-25 MHz main oscillator, dedicated 32 kHz oscillator, 1 x high-speed USART 4.5 Mbit/s, motor control oriented PWM, 2 x ADC(double sample and hold capability), advanced PLL schemes for audio class I2S communication, -40 to 85 °C or -40 to 105 °C</Description>
+    </Device>
+
+    <Device name="STM32F107VC">
+        <Flash size="256k">
+            <Bank size="1k">0</Bank>
+        </Flash>
+        <RAM size="64k"></RAM>
+        <Description>Connectivity line: 72 MHz CPU speed, 2-channel DAC, Vbat pin, low power features, embedded POR, PDR and PVD, internal RC 8MHz and 40kHz internal RC oscillator, 3-25 MHz main oscillator, dedicated 32 kHz oscillator, 1 x high-speed USART 4.5 Mbit/s, motor control oriented PWM, 2 x ADC(double sample and hold capability), advanced PLL schemes for audio class I2S communication, -40 to 85 °C or -40 to 105 °C</Description>
+    </Device>
+
+</DeviceList>

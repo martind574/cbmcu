@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="STM32" />
+		<Option pch_mode="2" />
+		<Option compiler="mingw" />
+		<Build>
+			<Target title="default">
+				<Option output="$(#cb)\devel\share\CodeBlocks\plugins\mcudrv\STM32.dll" prefix_auto="0" extension_auto="0" />
+				<Option object_output="$(#cb)\.objs\plugins\contrib\mcudrv\STM32" />
+				<Option type="3" />
+				<Option compiler="mingw" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-g" />
+					<Add option="-DBUILD_DLL" />
+				</Compiler>
+				<Linker>
+					<Add library="user32" />
+				</Linker>
+				<Environment>
+					<Variable name="WX_SUFFIX" value="u" />
+					<Variable name="WX_CFG" value="" />
+				</Environment>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-pipe" />
+			<Add option="-mthreads" />
+			<Add option="-fmessage-length=0" />
+			<Add option="-fexceptions" />
+			<Add option="-Winvalid-pch" />
+			<Add option="-DBUILDING_PLUGIN" />
+			<Add option="-DHAVE_W32API_H" />
+			<Add option="-D__WXMSW__" />
+			<Add option="-DWXUSINGDLL" />
+			<Add option="-DcbDEBUG" />
+			<Add option="-DCB_PRECOMP" />
+			<Add option="-DWX_PRECOMP" />
+			<Add option="-DwxUSE_UNICODE" />
+			<Add option="-DWXMAKINGDLL_PROPGRID" />
+			<Add option="-DwxPG_USE_WXMODULE=0" />
+			<Add directory="..\..\mcumgr" />
+			<Add directory="$(#cb)\include" />
+			<Add directory="$(#wx.include)" />
+			<Add directory="$(#wx.lib)\gcc_dll\mswu" />
+			<Add directory="$(#cb)\sdk\wxscintilla\include" />
+		</Compiler>
+		<Linker>
+			<Add option="-Wl,--enable-auto-image-base" />
+			<Add option="-Wl,--export-all-symbols" />
+			<Add option="-Wl,--add-stdcall-alias" />
+			<Add option="-Wl,--enable-auto-import" />
+			<Add library="mcumgr" />
+			<Add library="wxmsw28u" />
+			<Add library="codeblocks" />
+			<Add directory="$(#cb)\devel" />
+			<Add directory="$(#WX.lib)\gcc_dll$(WX_CFG)" />
+			<Add directory="$(#WX.lib)\gcc_dll$(WX_CFG)\msw$(WX_SUFFIX)" />
+		</Linker>
+		<ExtraCommands>
+			<Add after="xcopy /Y STM32.xml $(#cb)\devel\share\CodeBlocks\plugins\mcudrv\" />
+		</ExtraCommands>
+		<Unit filename="STM32.cpp" />
+		<Unit filename="STM32.h" />
+		<Unit filename="STM32.xml" />
+		<Unit filename="STM32generaloptions.cpp" />
+		<Unit filename="STM32generaloptions.h" />
+		<Unit filename="openocdplugin.cpp" />
+		<Unit filename="openocdplugin.h" />
+		<Unit filename="wxsmith\STM32GeneralOptions.wxs" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+			<wxsmith version="1">
+				<resources>
+					<wxPanel wxs="wxsmith/STM32GeneralOptions.wxs" src="STM32generaloptions.cpp" hdr="STM32generaloptions.h" name="STM32GeneralOptions" language="CPP" />
+				</resources>
+			</wxsmith>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

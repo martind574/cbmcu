@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<DeviceList family="STR7" driver="STR7.dll">
+
+    <Device name="STR710FZ1">
+        <Flash size="128k" block="0" base="0x40000000" len="0x00020000" variant="STR71x">Block0</Flash>
+        <Flash size="16k" block="1" base="0x400C0000" len="0x00004000" variant="STR71x">Block1</Flash>
+        <RAM size="32k" base="0x20000000" len="0x00008000">Block0</RAM>
+        <Description>128k+16k Flash, 32k RAM, 4x12-bit A/D, 4x16-bit timer, 48 I/O's, CAN/EMI/USB</Description>
+    </Device>
+
+    <Device name="STR710FZ2">
+        <Flash size="256k" block="0" base="0x40000000" len="0x00040000" variant="STR71x">Block0</Flash>
+        <Flash size="16k" block="1" base="0x400C0000" len="0x00004000" variant="STR71x">Block1</Flash>
+        <RAM size="64k" base="0x20000000" len="0x00010000">Block0</RAM>
+        <Description>256k+16k Flash, 64k RAM, 4x12-bit A/D, 4x16-bit timer, 48(8) I/O's, CAN/EMI/USB</Description>
+    </Device>
+
+    <Device name="STR711FR0">
+        <Flash size="64k" block="0" base="0x40000000" len="0x00010000" variant="STR71x">Block0</Flash>
+        <Flash size="16k" block="1" base="0x400C0000" len="0x00004000" variant="STR71x">Block1</Flash>
+        <RAM size="16k" base="0x20000000" len="0x00004000">Block0</RAM>
+        <Description>64k+16k Flash, 16k RAM, 30 I/O's, USB</Description>
+    </Device>
+
+    <Device name="STR711FR1">
+        <Flash size="128k" block="0" base="0x40000000" len="0x00020000" variant="STR71x">Block0</Flash>
+        <Flash size="16k" block="1" base="0x400C0000" len="0x00004000" variant="STR71x">Block1</Flash>
+        <RAM size="32k" base="0x20000000" len="0x00008000">Block0</RAM>
+        <Description>128k+16k Flash, 32k RAM, 30 I/O's, USB</Description>
+    </Device>
+
+    <Device name="STR711FR2">
+        <Flash size="256k" block="0" base="0x40000000" len="0x00040000" variant="STR71x">Block0</Flash>
+        <Flash size="16k" block="1" base="0x400C0000" len="0x00004000" variant="STR71x">Block1</Flash>
+        <RAM size="64k" base="0x20000000" len="0x00010000">Block0</RAM>
+        <Description>256k+16k Flash, 64k RAM, 30 I/O's, USB</Description>
+    </Device>
+
+    <Device name="STR712FR0">
+        <Flash size="64k" block="0" base="0x40000000" len="0x00010000" variant="STR71x">Block0</Flash>
+        <Flash size="16k" block="1" base="0x400C0000" len="0x00004000" variant="STR71x">Block1</Flash>
+        <RAM size="16k" base="0x20000000" len="0x00004000">Block0</RAM>
+        <Description>64k+16k Flash, 16k RAM, 30 I/O's, CAN</Description>
+    </Device>
+
+    <Device name="STR712FR1">
+        <Flash size="128k" block="0" base="0x40000000" len="0x00020000" variant="STR71x">Block0</Flash>
+        <Flash size="16k" block="1" base="0x400C0000" len="0x00004000" variant="STR71x">Block1</Flash>
+        <RAM size="32k" base="0x20000000" len="0x00008000">Block0</RAM>
+        <Description>128k+16k Flash, 32k RAM, 30 I/O's, CAN</Description>
+    </Device>
+
+    <Device name="STR712FR2">
+        <Flash size="256k" block="0" base="0x40000000" len="0x00040000" variant="STR71x">Block0</Flash>
+        <Flash size="16k" block="1" base="0x400C0000" len="0x00004000" variant="STR71x">Block1</Flash>
+        <RAM size="64k" base="0x20000000" len="0x00010000">Block0</RAM>
+        <Description>256k+16k Flash, 64k RAM, 30 I/O's, CAN</Description>
+    </Device>
+
+    <Device name="STR715FRx">
+        <Flash size="64k" block="0" base="0x40000000" len="0x00010000" variant="STR71x">Block0</Flash>
+        <Flash size="16k" block="1" base="0x400C0000" len="0x00004000" variant="STR71x">Block1</Flash>
+        <RAM size="16k" base="0x20000000" len="0x00004000">Block0</RAM>
+        <Description>64k Flash, 16k RAM, 32 I/O's</Description>
+    </Device>
+
+    <Device name="STR730FZ1">
+        <Flash size="128k" base="0x80000000" len="0x00020000" variant="STR73x">Internal</Flash>
+        <RAM size="16k" base="0x20000000" len="0x00004000">Block0</RAM>
+        <Description>64k Flash, 16k RAM, 32 I/O's</Description>
+    </Device>
+
+</DeviceList>

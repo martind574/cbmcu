@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<wxsmith>
+	<resource_extra>
+		<object root="1" />
+		<object name="ID_TREECTRL1" class="wxTreeCtrl" variable="TreeCtrl1" member="yes" />
+		<object name="ID_BTNSEL" class="wxButton" variable="btnSelect" member="yes">
+			<handler function="OnbtnSelectClick" entry="EVT_BUTTON" />
+		</object>
+		<object name="ID_STATICTEXT2" class="wxStaticText" variable="StaticText2" member="yes" />
+		<object name="ID_STATICDEVICENAME" class="wxStaticText" variable="statDeviceName" member="yes" />
+		<object name="ID_NOTEBOOK1" class="wxNotebook" variable="Notebook1" member="yes" />
+		<object name="ID_BUTTONSETTINGS" class="wxButton" variable="ButtonSettings" member="yes">
+			<handler function="OnButtonSettingsClick" entry="EVT_BUTTON" />
+		</object>
+	</resource_extra>
+</wxsmith>

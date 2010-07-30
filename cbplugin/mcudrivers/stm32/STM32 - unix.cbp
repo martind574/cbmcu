@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="STM32" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="default">
+				<Option platforms="Unix;" />
+				<Option output="$(#cb)/devel/share/codeblocks/plugins/mcudrv/STM32" prefix_auto="1" extension_auto="1" />
+				<Option object_output="$(#cb)/.objs/plugins/contrib/mcudrv/STM32" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-g" />
+					<Add option="`wx-config --cflags`" />
+					<Add option="-fPIC" />
+					<Add option="-DPIC" />
+					<Add directory="../../mcumgr" />
+					<Add directory="$(#cb)/include" />
+					<Add directory="$(#wx.include)" />
+				</Compiler>
+				<Linker>
+					<Add option="`wx-config --libs`" />
+					<Add library="codeblocks" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="cp -f STM32.xml $(#cb)/devel/share/codeblocks/plugins/mcudrv" />
+				</ExtraCommands>
+				<Environment>
+					<Variable name="WX_SUFFIX" value="u" />
+					<Variable name="WX_CFG" value="" />
+				</Environment>
+			</Target>
+		</Build>
+		<Linker>
+			<Add directory="$(#cb)/devel" />
+			<Add directory="$(#WX.lib)/gcc_dll$(WX_CFG)" />
+			<Add directory="$(#WX.lib)/gcc_dll$(WX_CFG)/msw$(WX_SUFFIX)" />
+		</Linker>
+		<Unit filename="STM32.cpp" />
+		<Unit filename="STM32.h" />
+		<Unit filename="STM32.xml" />
+		<Unit filename="STM32generaloptions.cpp" />
+		<Unit filename="STM32generaloptions.h" />
+		<Unit filename="openocdplugin.cpp" />
+		<Unit filename="openocdplugin.h" />
+		<Unit filename="wxsmith/STM32GeneralOptions.wxs" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+			<wxsmith version="1">
+				<resources>
+					<wxPanel wxs="wxsmith/STM32GeneralOptions.wxs" src="STM32generaloptions.cpp" hdr="STM32generaloptions.h" name="STM32GeneralOptions" language="CPP" />
+				</resources>
+			</wxsmith>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

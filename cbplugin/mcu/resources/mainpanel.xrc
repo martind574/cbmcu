@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resource xmlns="http://www.wxwidgets.org/wxxrc">
+	<object class="wxPanel" name="mainpanel">
+		<size>344,268</size>
+		<object class="wxTreeCtrl" name="ID_TREECTRLMICROS">
+			<pos>24,24</pos>
+			<size>224,224</size>
+		</object>
+		<object class="wxButton" name="ID_BUTTONSELECT">
+			<label>Select</label>
+			<pos>256,32</pos>
+		</object>
+		<object class="wxStaticText" name="ID_STATICTEXT1">
+			<label>Device:</label>
+			<pos>264,64</pos>
+		</object>
+		<object class="wxStaticText" name="ID_STATICDEVICE">
+			<label>[Device]</label>
+			<pos>304,64</pos>
+		</object>
+		<object class="wxButton" name="ID_BUTTONSETTINGS">
+			<label>Settings...</label>
+			<pos>256,96</pos>
+		</object>
+	</object>
+</resource>

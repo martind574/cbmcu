@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<wxsmith>
+	<resource_extra>
+		<object root="1" />
+		<object name="ID_NOTEBOOK1" class="wxNotebook" variable="NotebookOpenOCD" member="yes">
+			<handler function="OnNotebook1PageChanged" entry="EVT_NOTEBOOK_PAGE_CHANGED" />
+		</object>
+		<object name="ID_OPENOCDPANEL" class="wxPanel" variable="OpenOCD" member="yes" />
+		<object name="ID_STATICTEXT1" class="wxStaticText" variable="StaticText1" member="yes" />
+		<object name="ID_CHOICEDEBUGDEVICE" class="wxChoice" variable="ChoiceDebugDevice" member="yes">
+			<handler function="OnChoiceDebugDeviceSelect" entry="EVT_CHOICE" />
+		</object>
+		<object name="ID_STATICTEXT2" class="wxStaticText" variable="StaticText2" member="yes" />
+		<object name="ID_CHOICEPORT" class="wxChoice" variable="ChoicePort" member="yes" />
+		<object name="ID_STATICTEXT3" class="wxStaticText" variable="StaticText3" member="yes" />
+		<object name="ID_CHOICESPEED" class="wxChoice" variable="ChoiceSpeed" member="yes" />
+		<object name="ID_STATICTEXT4" class="wxStaticText" variable="StaticText4" member="yes" />
+		<object name="ID_TEXTCTRLCONFIGFILE" class="wxTextCtrl" variable="TextCtrlConfigFile" member="yes" />
+		<object name="ID_BUTTON2" class="wxButton" variable="Button2" member="yes">
+			<handler function="OnButton2Click" entry="EVT_BUTTON" />
+		</object>
+		<object name="ID_CHECKBOX1" class="wxCheckBox" variable="CheckBoxAuto" member="yes" />
+		<object name="ID_BUTTON1" class="wxButton" variable="Button1" member="yes" />
+		<object name="ID_BUTTONOK" class="wxButton" variable="ButtonOK" member="yes">
+			<handler function="OnButtonApplyClick" entry="EVT_BUTTON" />
+		</object>
+		<object name="ID_BUTTONCANCEL" class="wxButton" variable="ButtonCancel" member="yes">
+			<handler function="OnButtonCancelClick" entry="EVT_BUTTON" />
+		</object>
+	</resource_extra>
+</wxsmith>

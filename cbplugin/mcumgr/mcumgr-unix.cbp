@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="mcumgr" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Option show_notes="0">
+			<notes>
+				<![CDATA[Per project/build target settings?
+Create directory for mcudrv.
+Limit breakpoints for hardware debugging.
+If GDB fails, OpenOCD does not exit.]]>
+			</notes>
+		</Option>
+		<Build>
+			<Target title="Debug">
+				<Option platforms="Unix;" />
+				<Option output="$(#cb)/devel/mcumgr" prefix_auto="1" extension_auto="1" />
+				<Option object_output="$(#cb)/.objs/plugins/contrib/mcumgr" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option parameters="--debug-log --no-check-associations -nd" />
+				<Option host_application="$(#cb)/devel/codeblocks.exe" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="$(#cb)/devel/mcumgr.o" prefix_auto="0" extension_auto="0" />
+				<Option object_output="$(#cb)/.objs/plugins/contrib/mcumgr" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-Wall" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+			<Environment>
+				<Variable name="WX_SUFFIX" value="u" />
+				<Variable name="WX_CFG" value="" />
+			</Environment>
+		</Build>
+		<Compiler>
+			<Add option="`wx-config --cflags`" />
+			<Add option="-fPIC" />
+			<Add option="-DPIC" />
+			<Add directory="$(#cb.include)" />
+		</Compiler>
+		<Linker>
+			<Add option="`wx-config --libs`" />
+			<Add library="codeblocks" />
+			<Add directory="../../../devel" />
+		</Linker>
+		<Unit filename="configsettingsdialog.cpp" />
+		<Unit filename="configsettingsdialog.h" />
+		<Unit filename="configsettingspanel.cpp" />
+		<Unit filename="configsettingspanel.h" />
+		<Unit filename="mcuconfigmanager.cpp" />
+		<Unit filename="mcuconfigmanager.h" />
+		<Unit filename="mcudebugdrivermanager.cpp" />
+		<Unit filename="mcudebugdrivermanager.h" />
+		<Unit filename="mcuplugin.cpp" />
+		<Unit filename="mcuplugin.h" />
+		<Unit filename="mcupluginmanager.cpp" />
+		<Unit filename="mcupluginmanager.h" />
+		<Unit filename="openocd.cpp" />
+		<Unit filename="openocd.h" />
+		<Unit filename="openocdconfig.cpp" />
+		<Unit filename="openocdconfig.h" />
+		<Unit filename="remtargdrv.cpp" />
+		<Unit filename="remtargdrv.h" />
+		<Unit filename="telnetclient.cpp" />
+		<Unit filename="telnetclient.h" />
+		<Unit filename="wxsmith/ConfigSettingsDialog.wxs" />
+		<Unit filename="wxsmith/ConfigSettingsPanel.wxs" />
+		<Unit filename="wxsmith/OpenOCDConfig.wxs" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+			<wxsmith version="1">
+				<gui name="wxWidgets" src="" main="" init_handlers="necessary" language="CPP" />
+				<resources>
+					<wxDialog wxs="wxsmith/openocddlg.wxs" src="openocddlg.cpp" hdr="openocddlg.h" xrc="openocddlg.xrc" name="openocddlg" language="CPP" />
+					<wxPanel wxs="wxsmith/ConfigSettingsPanel.wxs" src="configsettingspanel.cpp" hdr="configsettingspanel.h" name="ConfigSettingsPanel" language="CPP" />
+					<wxDialog wxs="wxsmith/ConfigSettingsDialog.wxs" src="configsettingsdialog.cpp" hdr="configsettingsdialog.h" name="ConfigSettingsDialog" language="CPP" />
+					<wxPanel wxs="wxsmith/OpenOCDConfig.wxs" src="openocdconfig.cpp" hdr="openocdconfig.h" name="OpenOCDConfig" language="CPP" />
+				</resources>
+			</wxsmith>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

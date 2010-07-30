@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="STR7 - Columbus" />
+		<Option pch_mode="2" />
+		<Option compiler="sarm_gcc_compiler" />
+		<Build>
+			<Target title="Debug RAM">
+				<Option output="bin\DebugRAM\str7demo.elf" prefix_auto="1" extension_auto="0" />
+				<Option object_output="obj\DebugRAM\" />
+				<Option type="1" />
+				<Option compiler="sarm_gcc_compiler" />
+				<Option host_application="str7demo.elf" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-Wa,--defsym,DBGRAM=1" />
+					<Add option="-DDEBUG" />
+					<Add option="-DDBGRAM" />
+				</Compiler>
+				<Linker>
+					<Add option="-Tram71x.ld" />
+				</Linker>
+			</Target>
+			<Target title="Debug FLASH">
+				<Option output="bin\DebugFLASH\str7demo.elf" prefix_auto="1" extension_auto="0" />
+				<Option object_output="obj\DebugFLASH\" />
+				<Option type="1" />
+				<Option compiler="sarm_gcc_compiler" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add option="-Trom71x.ld" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add directory="inc" />
+			<Add directory="..\..\str7lib_v4\library\inc" />
+		</Compiler>
+		<Linker>
+			<Add option="-nostartfiles" />
+			<Add option="-Wl,-Map=${TARGET_OUTPUT_DIR}armcode.map" />
+		</Linker>
+		<Unit filename="openocd.cfg">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="src\main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src\startup.s" />
+		<Unit filename="src\syscalls.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src\vector.s" />
+		<Unit filename="src\vectors.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\str7lib_v4\library\src\71x_apb.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\str7lib_v4\library\src\71x_gpio.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\str7lib_v4\library\src\71x_lib.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\str7lib_v4\library\src\71x_rccu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<debugger>
+				<remote_debugging target="Debug RAM">
+					<options conn_type="0" serial_baud="115200" ip_address="localhost" ip_port="2000" additional_cmds="monitor soft_reset_halt&#x0A;monitor mww 0xFFFFFF00 0x01&#x0A;monitor reg pc 0x20000000&#x0A;monitor ARM7_9 sw_bkpts enable&#x0A;set remote memory-write-packet-size 1024&#x0A;set remote memory-write-packet-size fixed&#x0A;set remote memory-read-packet-size 1024&#x0A;set remote memory-read-packet-size fixed&#x0A;set remote hardware-watchpoint-limit 2&#x0A;set remote hardware-breakpoint-limit 2&#x0A;load&#x0A;tb main&#x0A;continue&#x0A;" />
+				</remote_debugging>
+				<remote_debugging target="Debug FLASH">
+					<options conn_type="0" serial_baud="115200" ip_address="localhost" ip_port="2000" additional_cmds="monitor soft_reset_halt&#x0A;monitor mww 0xFFFFFF00 0x01&#x0A;monitor arm7_9 force_hw_bkpts enable&#x0A;set remote memory-write-packet-size 1024&#x0A;set remote memory-write-packet-size fixed&#x0A;set remote memory-read-packet-size 1024&#x0A;set remote memory-read-packet-size fixed&#x0A;set remote hardware-watchpoint-limit 2&#x0A;set remote hardware-breakpoint-limit 2&#x0A;load&#x0A;tb main&#x0A;continue&#x0A;" />
+				</remote_debugging>
+			</debugger>
+			<mcu>
+				<device family="STR7" device="STR715FRx" />
+			</mcu>
+			<gdbremote>
+				<hardware interface="ft2232" option="olimex-jtag" deviceport="0" jtagspeed="4" gdbport="2000" configfile="openocd.cfg" auto="false" telnetport="4444" />
+			</gdbremote>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

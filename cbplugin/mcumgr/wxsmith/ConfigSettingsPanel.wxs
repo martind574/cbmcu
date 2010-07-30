@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<wxsmith>
+	<object class="wxPanel" name="ConfigSettingsPanel">
+		<size>520,526</size>
+		<maxsize>-1,-1</maxsize>
+		<id_arg>0</id_arg>
+		<object class="wxNotebook" name="ID_NOTEBOOKCONFIGPANELS" variable="NotebookConfigPanels" member="yes">
+			<size>520,544</size>
+		</object>
+	</object>
+</wxsmith>

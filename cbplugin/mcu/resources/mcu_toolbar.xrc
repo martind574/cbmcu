@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<resource>
+  <object class="wxToolBarAddOn" name="mcu_toolbar">
+    <object class="tool" name="idProgram">
+	  <tooltip>Program</tooltip>
+      <longhelp>Program the Micro</longhelp>
+      <bitmap>images/arrow_down.png</bitmap>
+    </object>
+  </object>
+</resource>

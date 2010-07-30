@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="mcu" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="default">
+				<Option platforms="Unix;" />
+				<Option output="$(#cb)/devel/share/codeblocks/plugins/mcu.so" prefix_auto="0" extension_auto="0" />
+				<Option object_output="$(#cb)/.objs/plugins/contrib/mcu" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option parameters="--debug-log --no-check-associations -nd" />
+				<Option host_application="$(#cb)/devel/codeblocks.exe" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="`wx-config --cflags`" />
+					<Add option="-fPIC" />
+					<Add option="-DPIC" />
+					<Add directory="$(#cb)/include" />
+					<Add directory="$(#cb)/include/wxscintilla/include" />
+					<Add directory="$(#wx.include)" />
+					<Add directory="$(#cb)/devel" />
+					<Add directory="../mcumgr" />
+				</Compiler>
+				<Linker>
+					<Add option="`wx-config --libs`" />
+					<Add library="codeblocks" />
+					<Add directory="$(#cb)/devel" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="$(#zip) -j9 $(#cb)/devel/share/codeblocks/mcu.zip manifest.xml McuPanel.xrc" />
+				</ExtraCommands>
+			</Target>
+		</Build>
+		<Unit filename="McuPanel.cpp" />
+		<Unit filename="McuPanel.h" />
+		<Unit filename="MicroTreeInfo.cpp" />
+		<Unit filename="MicroTreeInfo.h" />
+		<Unit filename="manifest.xml" />
+		<Unit filename="mcumain.cpp" />
+		<Unit filename="mcumain.h" />
+		<Unit filename="wxsmith/McuPanel.wxs" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<wxsmith version="1">
+				<gui name="wxWidgets" src="" main="" init_handlers="necessary" language="CPP" />
+				<resources>
+					<wxPanel wxs="wxsmith/McuPanel.wxs" src="McuPanel.cpp" hdr="McuPanel.h" xrc="McuPanel.xrc" name="McuPanel" language="CPP" />
+				</resources>
+			</wxsmith>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

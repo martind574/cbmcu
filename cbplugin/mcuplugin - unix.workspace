@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="MCU plugin - unix">
+		<Project filename="mcumgr/mcumgr-unix.cbp" active="1" />
+		<Project filename="mcu/mcu - unix.cbp" />
+		<Project filename="mcudrivers/str7/STR7 - unix.cbp" />
+		<Project filename="mcudrivers/stm32/STM32 - unix.cbp" />
+		<Project filename="mcudrivers/generic/generic - unix.cbp" />
+	</Workspace>
+</CodeBlocks_workspace_file>

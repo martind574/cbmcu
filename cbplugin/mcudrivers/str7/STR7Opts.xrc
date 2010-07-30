@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resource xmlns="http://www.wxwidgets.org/wxxrc">
+	<object class="wxDialog" name="STR7Opts">
+		<title>Dialog</title>
+		<centered>1</centered>
+		<object class="wxCheckBox" name="ID_CHECKBOX1">
+			<label>Some cool option</label>
+			<pos>16,24</pos>
+		</object>
+	</object>
+</resource>
