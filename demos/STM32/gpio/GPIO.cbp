@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="GPIO" />
+		<Option pch_mode="2" />
+		<Option compiler="codesourcery" />
+		<Option virtualFolders="Source\;StdPeriphLib\;CMSIS\;" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin\Debug\GPIO.elf" prefix_auto="0" extension_auto="0" />
+				<Option object_output="obj\Debug\" />
+				<Option type="1" />
+				<Option compiler="codesourcery" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add option="-T linker\STM32F10x_128k_20k_flash.ld" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin\Release\GPIO" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj\Release\" />
+				<Option type="1" />
+				<Option compiler="codesourcery" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-mcpu=cortex-m3 -mthumb" />
+			<Add option="-DUSE_STDPERIPH_DRIVER" />
+			<Add option="-DSTM32F10X_MD" />
+			<Add option="-DUSE_STM3210B_EVAL" />
+			<Add directory="src" />
+			<Add directory="..\lib\CMSIS\CM3\DeviceSupport\ST\STM32F10x" />
+			<Add directory="..\lib\CMSIS\CM3\CoreSupport" />
+			<Add directory="..\lib\STM32F10x_StdPeriph_Driver\inc" />
+			<Add directory="..\lib\STM32_EVAL" />
+			<Add directory="..\lib\STM32_EVAL\STM3210B_EVAL" />
+			<Add directory="..\lib\STM32_EVAL\common" />
+		</Compiler>
+		<Unit filename="src\main.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="Source\" />
+		</Unit>
+		<Unit filename="src\stm32f10x_conf.h">
+			<Option virtualFolder="Source\" />
+		</Unit>
+		<Unit filename="src\stm32f10x_it.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="Source\" />
+		</Unit>
+		<Unit filename="src\stm32f10x_it.h">
+			<Option virtualFolder="Source\" />
+		</Unit>
+		<Unit filename="..\lib\CMSIS\CM3\CoreSupport\core_cm3.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="CMSIS\" />
+		</Unit>
+		<Unit filename="..\lib\CMSIS\CM3\DeviceSupport\ST\STM32F10x\startup\gcc_ride7\startup_stm32f10x_md.s">
+			<Option virtualFolder="CMSIS\" />
+		</Unit>
+		<Unit filename="..\lib\CMSIS\CM3\DeviceSupport\ST\STM32F10x\system_stm32f10x.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="CMSIS\" />
+		</Unit>
+		<Unit filename="..\lib\STM32F10x_StdPeriph_Driver\src\misc.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="StdPeriphLib\" />
+		</Unit>
+		<Unit filename="..\lib\STM32F10x_StdPeriph_Driver\src\stm32f10x_exti.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="StdPeriphLib\" />
+		</Unit>
+		<Unit filename="..\lib\STM32F10x_StdPeriph_Driver\src\stm32f10x_flash.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="StdPeriphLib\" />
+		</Unit>
+		<Unit filename="..\lib\STM32F10x_StdPeriph_Driver\src\stm32f10x_gpio.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="StdPeriphLib\" />
+		</Unit>
+		<Unit filename="..\lib\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="StdPeriphLib\" />
+		</Unit>
+		<Unit filename="..\lib\STM32F10x_StdPeriph_Driver\src\stm32f10x_rcc.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="StdPeriphLib\" />
+		</Unit>
+		<Unit filename="..\lib\STM32F10x_StdPeriph_Driver\src\stm32f10x_spi.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="StdPeriphLib\" />
+		</Unit>
+		<Unit filename="..\lib\STM32F10x_StdPeriph_Driver\src\stm32f10x_usart.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="StdPeriphLib\" />
+		</Unit>
+		<Unit filename="..\lib\STM32_EVAL\stm32_eval.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="Source\" />
+		</Unit>
+		<Unit filename="..\lib\STM32_EVAL\stm32_eval.h">
+			<Option virtualFolder="Source\" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<debugger>
+				<remote_debugging target="Debug">
+					<options conn_type="0" serial_baud="115200" ip_address="localhost" ip_port="2000" />
+				</remote_debugging>
+			</debugger>
+			<mcu>
+				<device family="STM32" device="STM32F103VB" />
+			</mcu>
+			<gdbremote>
+				<hardware interface="ft2232" option="olimex-jtag" deviceport="0" jtagspeed="500" gdbport="2000" configfile="openocd.cfg" auto="true" telnetport="4444" tclport="6666" />
+			</gdbremote>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

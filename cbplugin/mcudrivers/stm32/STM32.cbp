@@ -60,7 +60,8 @@
 			<Add directory="$(#WX.lib)\gcc_dll$(WX_CFG)\msw$(WX_SUFFIX)" />
 		</Linker>
 		<ExtraCommands>
-			<Add after="xcopy /Y STM32.xml $(#cb)\devel\share\CodeBlocks\plugins\mcudrv\" />
+			<Add after="xcopy /Y resources\STM32.xml $(#cb)\devel\share\CodeBlocks\plugins\mcudrv\" />
+			<Add after="xcopy /Y resources\stm32.cfg $(#cb)\devel\share\CodeBlocks\plugins\mcudrv\" />
 		</ExtraCommands>
 		<Unit filename="STM32.cpp" />
 		<Unit filename="STM32.h" />

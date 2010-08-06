@@ -21,40 +21,30 @@ int OpenOCDPlugin::OnWriteConfigFile(wxFile &file)
 {
     wxString s;
     unsigned long size;
+    wxString cfgFile;
 
-    //file.Write(_T("\n\n#use combined on interfaces or targets that can't set TRST/SRST separately"));
-    //file.Write(_T("\nreset_config trst_and_srst"));
+    //wxString mcuPath = ConfigManager::GetFolder(sdDataGlobal) + _T("/mcudrv");
+    wxString pluginDir = ConfigManager::GetFolder(sdPluginsGlobal);
+    wxString mcuPluginDir = pluginDir + wxFILE_SEP_PATH + _T("mcudrv");
 
-    // Write scan chains
-    file.Write(_T("\n\n#jtag scan chain: CPU"));
-    file.Write(_T("\njtag newtap stm32 cpu -irlen 4 -ircapture 0x1 -irmask 0x0f -expected-id 0x3ba00477"));
+    wxFileInputStream cf(mcuPluginDir + wxFILE_SEP_PATH + _T("stm32.cfg"));
+    if (cf.IsOk() == false)
+        return 0;
 
-    file.Write(_T("\n\n#jtag scan chain: BS"));
-    file.Write(_T("\njtag newtap stm32 bs -irlen 5 -expected-id 0x06412041 -expected-id 0x06410041 -expected-id 0x16410041 -expected-id 0x06414041 -expected-id 0x06418041"));
-    //file.Write(m_TapBS);
+    wxTextInputStream text(cf);
+    while(cf.IsOk() && !cf.Eof() )
+    {
+        wxString line = text.ReadLine();
+        cfgFile += line;
+        cfgFile += '\n';
+    }
 
-    // Create target
-    file.Write(_T("\n\ntarget create stm32.cpu cortex_m3 -endian little -chain-position stm32.cpu"));
-
+    /* Do some quick and dirty template replace. */
     m_RAMSize.ToULong(&size, 10);
     size *= 1024;
     s = wxString::Format(_T("%d"), size);
 
-    file.Write(_T("\nstm32.cpu configure -work-area-phys 0x20000000 -work-area-size "));
-    file.Write(s);
-    file.Write(_T(" -work-area-backup 0"));
-
-    file.Write(_T("\n\n#flash is probed"));
-    file.Write(_T("\nflash bank stm32x 0 0 0 0 stm32.cpu"));
-
-    //file.Write(_T("\n\n#GDB flash programming"));
-    //file.Write(_T("\ngdb_memory_map enable"));
-    //file.Write(_T("\ngdb_flash_program enable"));
-
-    // Write flash programming routine called progflash. MCU plugin will call this routine
-    // when programming button is pressed.
-    file.Write(_T("\n\n#flash programming routine"));
-    file.Write(_T("\nproc progflash {} {\n\tflash write_image erase "));
+    cfgFile.Replace(_T("@@WORK_AREA_SIZE@@"), s);
 
     // Now we need to get target name from manager
     cbProject *project = Manager::Get()->GetProjectManager()->GetActiveProject();
@@ -63,10 +53,9 @@ int OpenOCDPlugin::OnWriteConfigFile(wxFile &file)
     wxString strOutFile = target->GetOutputFilename();
     while (strOutFile.Replace(_T("\\"), _T("/")));
 
-    file.Write(strOutFile);
-    file.Write(_T("\n}"));
+    cfgFile.Replace(_T("@@OUTPUT_FILE@@"), strOutFile);
 
-    file.Write(_T("\n\ninit\nreset halt\n"));
+    file.Write(cfgFile);
 
     return 1;
 }
