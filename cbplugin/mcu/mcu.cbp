@@ -15,21 +15,6 @@
 				<Option host_application="$(#cb)\devel\codeblocks.exe" />
 				<Compiler>
 					<Add option="-g" />
-					<Add option="-pipe" />
-					<Add option="-mthreads" />
-					<Add option="-fmessage-length=0" />
-					<Add option="-fexceptions" />
-					<Add option="-Winvalid-pch" />
-					<Add option="-DBUILDING_PLUGIN" />
-					<Add option="-DHAVE_W32API_H" />
-					<Add option="-D__WXMSW__" />
-					<Add option="-DWXUSINGDLL" />
-					<Add option="-DcbDEBUG" />
-					<Add option="-DCB_PRECOMP" />
-					<Add option="-DWX_PRECOMP" />
-					<Add option="-DwxUSE_UNICODE" />
-					<Add option="-DWXMAKINGDLL_PROPGRID" />
-					<Add option="-DwxPG_USE_WXMODULE=0" />
 					<Add directory="$(#cb)\include" />
 					<Add directory="$(#cb)\sdk\wxscintilla\include" />
 					<Add directory="$(#wx.include)" />
@@ -52,6 +37,23 @@
 				</ExtraCommands>
 			</Target>
 		</Build>
+		<Compiler>
+			<Add option="-pipe" />
+			<Add option="-mthreads" />
+			<Add option="-fmessage-length=0" />
+			<Add option="-fexceptions" />
+			<Add option="-Winvalid-pch" />
+			<Add option="-DBUILDING_PLUGIN" />
+			<Add option="-DHAVE_W32API_H" />
+			<Add option="-D__WXMSW__" />
+			<Add option="-DWXUSINGDLL" />
+			<Add option="-DcbDEBUG" />
+			<Add option="-DCB_PRECOMP" />
+			<Add option="-DWX_PRECOMP" />
+			<Add option="-DwxUSE_UNICODE" />
+			<Add option="-DWXMAKINGDLL_PROPGRID" />
+			<Add option="-DwxPG_USE_WXMODULE=0" />
+		</Compiler>
 		<Linker>
 			<Add directory="$(#cb)" />
 		</Linker>

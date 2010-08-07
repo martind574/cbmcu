@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_workspace_file>
 	<Workspace title="MCU plugin">
-		<Project filename="mcumgr/mcumgr.cbp" />
-		<Project filename="mcu/mcu.cbp" active="1">
+		<Project filename="mcumgr/mcumgr.cbp" active="1" />
+		<Project filename="mcu/mcu.cbp">
 			<Depends filename="mcumgr/mcumgr.cbp" />
 		</Project>
 		<Project filename="mcudrivers/str7/STR7.cbp">

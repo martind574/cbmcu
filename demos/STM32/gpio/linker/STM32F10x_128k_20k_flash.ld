@@ -1,10 +1,8 @@
 /*
 Default linker script for STM32F10x_128K_20K with GNU-ld
 Martin Thomas, 9/2009
-A heavily modified "Default linker script for STM32F10x_512K_64K" 
+A heavily modified "Default linker script for STM32F10x_512K_64K"
 Copyright RAISONANCE S.A.S. 2008 found in the STM fw-library.
-(there is not much left from Raisonance's code and nearly everything
-has been modified or reordered)
 */
 
 /* Program Entry, set to mark it as "used" and avoid gc */
@@ -13,15 +11,15 @@ ENTRY(Reset_Handler)
 /* Memory Spaces Definitions */
 MEMORY
 {
-	RAM      (RWX) : ORIGIN = 0x20000000+0, LENGTH = 20K-0
-	EXTSRAM  (RWX) : ORIGIN = 0x68000000, LENGTH = 0
-	FLASH    (RX)  : ORIGIN = 0x08000000+0, LENGTH = 128K-2K-0
-	EEMUL    (RWX) : ORIGIN = 0x08000000+128k-2k, LENGTH = 2k
-	FLASHB1  (RX)  : ORIGIN = 0x00000000, LENGTH = 0
-	EXTMEMB0 (RX)  : ORIGIN = 0x00000000, LENGTH = 0
-	EXTMEMB1 (RX)  : ORIGIN = 0x00000000, LENGTH = 0
-	EXTMEMB2 (RX)  : ORIGIN = 0x00000000, LENGTH = 0
-	EXTMEMB3 (RX)  : ORIGIN = 0x00000000, LENGTH = 0
+  RAM      (RWX) : ORIGIN = 0x20000000+0, LENGTH = 20K-0
+  EXTSRAM  (RWX) : ORIGIN = 0x68000000, LENGTH = 0
+  FLASH    (RX)  : ORIGIN = 0x08000000+0, LENGTH = 128K-2K-0
+  EEMUL    (RWX) : ORIGIN = 0x08000000+128k-2k, LENGTH = 2k
+  FLASHB1  (RX)  : ORIGIN = 0x00000000, LENGTH = 0
+  EXTMEMB0 (RX)  : ORIGIN = 0x00000000, LENGTH = 0
+  EXTMEMB1 (RX)  : ORIGIN = 0x00000000, LENGTH = 0
+  EXTMEMB2 (RX)  : ORIGIN = 0x00000000, LENGTH = 0
+  EXTMEMB3 (RX)  : ORIGIN = 0x00000000, LENGTH = 0
 }
 
 /* higher address of the user mode stack */
@@ -41,147 +39,67 @@ ASSERT(ORIGIN(FLASH) == ALIGN(ORIGIN(FLASH), 0x80), "Start of memory region flas
 SECTIONS
 {
 
-	/* the program code is stored in the .text section, which goes to Flash */
-	.text :
-	{
-		. = ALIGN(0x80); /* PM0056, Rev.1 (4/2009), 4.3.3 */
-		_isr_vectorsflash_offs = . - 0x08000000;
-		KEEP(*(.isr_vectorsflash))
-		. = ALIGN(4);
-		CREATE_OBJECT_SYMBOLS
-		*(.text .text.* .gnu.linkonce.t.*)
-		*(.plt)
-		*(.gnu.warning)
-		*(.glue_7t) *(.glue_7) *(.vfp11_veneer)
-		*(.ARM.extab* .gnu.linkonce.armextab.*)
-		*(.gcc_except_table)
-	} >FLASH
-
-	.eh_frame_hdr : ALIGN (4)
-	{
-		KEEP (*(.eh_frame_hdr))
-	} >FLASH
-	.eh_frame : ALIGN (4)
-	{
-		KEEP (*(.eh_frame))
-	} >FLASH
-	
-	/* .ARM.exidx is sorted, so has to go in its own output section.  */
-	__exidx_start = .;
-	.ARM.exidx :
-	{
-		*(.ARM.exidx* .gnu.linkonce.armexidx.*)
-	} >FLASH
-	__exidx_end = .;
-
-	.rodata : ALIGN (4)
-	{
-		*(.rodata .rodata.* .gnu.linkonce.r.*)
-		
-		. = ALIGN(4);
-		KEEP(*(.init))
-		
-		. = ALIGN(4);
-		__preinit_array_start = .;
-		KEEP (*(.preinit_array))
-		__preinit_array_end = .;
-		
-		. = ALIGN(4);
-		__init_array_start = .;
-		KEEP (*(SORT(.init_array.*)))
-		KEEP (*(.init_array))
-		__init_array_end = .;
-		
-		. = ALIGN(4);
-		KEEP(*(.fini))
-		
-		. = ALIGN(4);
-		__fini_array_start = .;
-		KEEP (*(.fini_array))
-		KEEP (*(SORT(.fini_array.*)))
-		__fini_array_end = .;
-		
-		. = ALIGN(0x4);
-		KEEP (*crtbegin.o(.ctors))
-		KEEP (*(EXCLUDE_FILE (*crtend.o) .ctors))
-		KEEP (*(SORT(.ctors.*)))
-		KEEP (*crtend.o(.ctors))
-		
-		. = ALIGN(0x4);
-		KEEP (*crtbegin.o(.dtors))
-		KEEP (*(EXCLUDE_FILE (*crtend.o) .dtors))
-		KEEP (*(SORT(.dtors.*)))
-		KEEP (*crtend.o(.dtors))
-		
-		*(.init .init.*)
-		*(.fini .fini.*)
-		
-		PROVIDE_HIDDEN (__preinit_array_start = .);
-		KEEP (*(.preinit_array))
-		PROVIDE_HIDDEN (__preinit_array_end = .);
-		PROVIDE_HIDDEN (__init_array_start = .);
-		KEEP (*(SORT(.init_array.*)))
-		KEEP (*(.init_array))
-		PROVIDE_HIDDEN (__init_array_end = .);
-		PROVIDE_HIDDEN (__fini_array_start = .);
-		KEEP (*(.fini_array))
-		KEEP (*(SORT(.fini_array.*)))
-		PROVIDE_HIDDEN (__fini_array_end = .);
-		
-		. = ALIGN (8);
-		*(.rom)
-		*(.rom.b)
-		_etext = .;
-		/* This is used by the startup in order to initialize the .data secion */
-		_sidata = _etext;
-	} >FLASH
-
-	/* This is the initialized data section
-	The program executes knowing that the data is in the RAM
-	but the loader puts the initial values in the FLASH (inidata).
-	It is one task of the startup to copy the initial values from FLASH to RAM. */
-	.data : ALIGN (8)
-	{
-		/* This is used by the startup in order to initialize the .data section */
-		_sdata = . ;
-		
-		. = ALIGN(0x80);
-		_isr_vectorsram_offs = . - 0x20000000;
-		KEEP(*(.isr_vectorsram))
-		
-		. = ALIGN(4);
-		KEEP(*(.jcr))
-		*(.got.plt) *(.got)
-		*(.shdata)
-		*(.data .data.* .gnu.linkonce.d.*)
-		. = ALIGN (8);
-		*(.ram)
-		*(.ramfunc*)
-		 . = ALIGN(4);
-		/* This is used by the startup in order to initialize the .data section */
-		_edata = .;
-	} >RAM AT>FLASH
-
-	/* This is the uninitialized data section */
-	.bss (NOLOAD):
-	{
-		. = ALIGN(4);
-		/* This is used by the startup in order to initialize the .bss section */
-		_sbss = .;
-		*(.shbss)
-		*(.bss .bss.* .gnu.linkonce.b.*)
-		*(COMMON)
-		. = ALIGN (8);
-		*(.ram.b)
-		. = ALIGN(4);
-		 /* This is used by the startup in order to initialize the .bss section */
-		 _ebss = . ;
-		_end = .;
-		__end = .;
-	} >RAM AT>FLASH
+    /* the program code is stored in the .text section, which goes to Flash */
+    .text :
+    {
+        . = ALIGN(0x80); /* PM0056, Rev.1 (4/2009), 4.3.3 */
+        _isr_vector = . - 0x08000000;
+        KEEP(*(.isr_vector))
+        . = ALIGN(4);
+        *(.text)                   /* code */
+        *(.text.*)                 /* remaining code (-ffunction-sections)*/
+        *(.stub .gnu.linkonce.t.*)
+        *(.rodata .rodata.* .gnu.linkonce.r.*) /* read-only data (constants) */
+        *(.glue_7 .glue_7t)        /* redundant for thumb2 ?! */
+        . = ALIGN(4);
+        _etext = .;
+        /* This is used by the startup in order to initialize the .data secion */
+        _sidata = _etext;
+    } >FLASH
 
 
-    /* This is the user stack section 
+    /* This is the initialized data section
+    The program executes knowing that the data is in the RAM
+    but the loader puts the initial values in the FLASH (inidata).
+    It is one task of the startup to copy the initial values from FLASH to RAM. */
+    .data  : AT ( _sidata )
+    {
+        . = .;
+        . = ALIGN(4);
+        /* This is used by the startup in order to initialize the .data section */
+        _sdata = . ;
+
+        . = ALIGN(0x80);
+        _isr_vectorsram_offs = . - 0x20000000;
+        KEEP(*(.isr_vectorsram))
+        . = ALIGN(4);
+
+        *(.ramfunc*)
+        . = ALIGN(4);
+        *(.data .data.* .gnu.linkonce.d.*)
+        . = ALIGN(4);
+        /* This is used by the startup in order to initialize the .data section */
+        _edata = . ;
+    } >RAM
+
+
+    /* This is the uninitialized data section */
+    .bss (NOLOAD):
+    {
+        . = ALIGN(4);
+        /* This is used by the startup in order to initialize the .bss section */
+        _sbss = .;
+        *(.bss .bss.*)
+        *(COMMON)
+        . = ALIGN(4);
+         /* This is used by the startup in order to initialize the .bss section */
+         _ebss = . ;
+    } >RAM
+
+    PROVIDE ( end = _ebss );
+    PROVIDE ( _end = _ebss );
+
+    /* This is the user stack section
     This is just to check that there is enough RAM left for the User mode stack
     It should generate an error if it's full.
      */
@@ -204,11 +122,11 @@ SECTIONS
         *(.b1rodata)                 /* read-only data (constants) */
         *(.b1rodata*)
     } >FLASHB1
-    
+
     /* this is the EXTMEM */
     /* the C or assembly source must explicitly place the code or data there
     using the "section" attribute */
-    
+
     /* EXTMEM Bank0 */
     .eb0text :
     {
@@ -216,7 +134,7 @@ SECTIONS
         *(.eb0rodata)                 /* read-only data (constants) */
         *(.eb0rodata*)
     } >EXTMEMB0
-    
+
     /* EXTMEM Bank1 */
     .eb1text :
     {
@@ -224,7 +142,7 @@ SECTIONS
         *(.eb1rodata)                 /* read-only data (constants) */
         *(.eb1rodata*)
     } >EXTMEMB1
-    
+
     /* EXTMEM Bank2 */
     .eb2text :
     {
@@ -232,7 +150,7 @@ SECTIONS
         *(.eb2rodata)                 /* read-only data (constants) */
         *(.eb2rodata*)
     } >EXTMEMB2
-    
+
     /* EXTMEM Bank0 */
     .eb3text :
     {
@@ -240,11 +158,11 @@ SECTIONS
         *(.eb3rodata)                 /* read-only data (constants) */
         *(.eb3rodata*)
     } >EXTMEMB3
-    
-    
-    
+
+
+
     /* after that it's only debugging information. */
-    
+
     /* remove the debugging information from the standard libraries */
 /*    DISCARD :
     {
@@ -296,10 +214,10 @@ SECTIONS
   /DISCARD/ : { *(.note.GNU-stack) *(.gnu_debuglink) }
 }
 
-/* mthomas:  from the STM example - moved here for now to keep it as reference, not 
+/* mthomas:  from the STM example - moved here for now to keep it as reference, not
    used in the project (useful anyway?)*/
 
-/* default stack size(s). These are used by the startup in order to allocate stacks for 
+/* default stack size(s). These are used by the startup in order to allocate stacks for
 the different modes. */
 __Stack_Size = 1024 ;
 
