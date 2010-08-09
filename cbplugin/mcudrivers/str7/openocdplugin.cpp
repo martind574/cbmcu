@@ -75,13 +75,15 @@ int OpenOCDPlugin::OnWriteConfigFile(wxFile &file)
 
         FlashMem mem = m_FlashBlocks[n];
 
-        /* Dynamically create placeholders. */
-        wxString wxFlashBase, wxFlashSize;
-        wxFlashBase.Format(_T("@@FLASH_BANK_BASE_%d@@"), n);
-        wxFlashSize.Format(_T("@@FLASH_BANK_SIZE_%d@@"), n);
+        wchar_t cbFlashBase[256];
+        wchar_t cbFlashSize[256];
 
-        cfgFile.Replace(wxFlashBase, mem.m_Base.wx_str());
-        cfgFile.Replace(wxFlashSize, mem.m_Len.wx_str());
+        /* Dynamically create placeholders. */
+        wsprintf(cbFlashBase, _T("@@FLASH_BANK_BASE_%d@@"), n);
+        wsprintf(cbFlashSize, _T("@@FLASH_BANK_SIZE_%d@@"), n);
+
+        cfgFile.Replace(cbFlashBase, mem.m_Base);
+        cfgFile.Replace(cbFlashSize, mem.m_Len);
     }
 
     file.Write(cfgFile);

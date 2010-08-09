@@ -472,8 +472,14 @@ int OpenOCDDriver::WriteConfigFile(void)
         of.Write(m_Interface);
     }
 
+    of.Write(_T("\n\n"));
+
     // The plugin can write the rest
     int nRet = OnWriteConfigFile(of);
+    if (nRet == 0) {
+        // Plugin config failed.
+        cbMessageBox(_T("Plugin has failed to write configuration"), _("cbmcu plugin error"), wxICON_STOP);
+    }
     of.Close();
 
     return nRet;
