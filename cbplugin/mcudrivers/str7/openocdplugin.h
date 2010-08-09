@@ -39,9 +39,9 @@ class OpenOCDPlugin : public OpenOCDDriver
         void WriteConfigSTR75(wxFile &file);
 
         wxString m_Part;        // Part number of micro
-
         FlashBlockArray m_FlashBlocks;
         bool m_UnprotectFlash;
+        wxString m_RAMSize;
 
         STR7GeneralOptions *m_Config;   // Config dialog extension
 

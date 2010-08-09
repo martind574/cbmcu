@@ -60,15 +60,21 @@
 			<Add directory="$(#WX.lib)\gcc_dll$(WX_CFG)\msw$(WX_SUFFIX)" />
 		</Linker>
 		<ExtraCommands>
-			<Add after="xcopy /Y STR7.xml $(#cb)\devel\share\CodeBlocks\plugins\mcudrv\" />
+			<Add after="xcopy /Y resources\STR7.xml $(#cb)\devel\share\CodeBlocks\plugins\mcudrv\" />
+			<Add after="xcopy /Y resources\str710.cfg $(#cb)\devel\share\CodeBlocks\plugins\mcudrv\" />
+			<Add after="xcopy /Y resources\str730.cfg $(#cb)\devel\share\CodeBlocks\plugins\mcudrv\" />
+			<Add after="xcopy /Y resources\str750.cfg $(#cb)\devel\share\CodeBlocks\plugins\mcudrv\" />
 		</ExtraCommands>
 		<Unit filename="STR7.cpp" />
 		<Unit filename="STR7.h" />
-		<Unit filename="STR7.xml" />
 		<Unit filename="STR7generaloptions.cpp" />
 		<Unit filename="STR7generaloptions.h" />
 		<Unit filename="openocdplugin.cpp" />
 		<Unit filename="openocdplugin.h" />
+		<Unit filename="resources\STR7.xml" />
+		<Unit filename="resources\str710.cfg" />
+		<Unit filename="resources\str730.cfg" />
+		<Unit filename="resources\str750.cfg" />
 		<Unit filename="wxsmith\STR7GeneralOptions.wxs" />
 		<Extensions>
 			<code_completion />

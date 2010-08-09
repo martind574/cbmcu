@@ -2,6 +2,24 @@
 <CodeBlocks_layout_file>
 	<ActiveTarget name="default" />
 	<File name="STR7.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="281" topLine="0" />
+		<Cursor position="281" topLine="21" />
+	</File>
+	<File name="openocdplugin.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="2341" topLine="55" />
+	</File>
+	<File name="openocdplugin.h" open="0" top="0" tabpos="3">
+		<Cursor position="1078" topLine="20" />
+	</File>
+	<File name="resources\STR7.xml" open="0" top="0" tabpos="0">
+		<Cursor position="3417" topLine="43" />
+	</File>
+	<File name="resources\str710.cfg" open="0" top="0" tabpos="0">
+		<Cursor position="1601" topLine="25" />
+	</File>
+	<File name="resources\str730.cfg" open="0" top="0" tabpos="0">
+		<Cursor position="1529" topLine="25" />
+	</File>
+	<File name="resources\str750.cfg" open="0" top="0" tabpos="0">
+		<Cursor position="1631" topLine="0" />
 	</File>
 </CodeBlocks_layout_file>

@@ -10,7 +10,7 @@
 				<Option output="bin\DebugRAM\str7demo.elf" prefix_auto="1" extension_auto="0" />
 				<Option object_output="obj\DebugRAM\" />
 				<Option type="1" />
-				<Option compiler="sarm_gcc_compiler" />
+				<Option compiler="yagarto" />
 				<Option host_application="str7demo.elf" />
 				<Compiler>
 					<Add option="-g" />
@@ -19,19 +19,19 @@
 					<Add option="-DDBGRAM" />
 				</Compiler>
 				<Linker>
-					<Add option="-Tram71x.ld" />
+					<Add option="-T linker\ram71x.ld" />
 				</Linker>
 			</Target>
 			<Target title="Debug FLASH">
 				<Option output="bin\DebugFLASH\str7demo.elf" prefix_auto="1" extension_auto="0" />
 				<Option object_output="obj\DebugFLASH\" />
 				<Option type="1" />
-				<Option compiler="sarm_gcc_compiler" />
+				<Option compiler="yagarto" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
 				<Linker>
-					<Add option="-Trom71x.ld" />
+					<Add option="-T linker\rom71x.ld" />
 				</Linker>
 			</Target>
 		</Build>
@@ -73,19 +73,20 @@
 		<Extensions>
 			<code_completion />
 			<debugger>
-				<remote_debugging target="Debug RAM">
-					<options conn_type="0" serial_baud="115200" ip_address="localhost" ip_port="2000" additional_cmds="monitor soft_reset_halt&#x0A;monitor mww 0xFFFFFF00 0x01&#x0A;monitor reg pc 0x20000000&#x0A;monitor ARM7_9 sw_bkpts enable&#x0A;set remote memory-write-packet-size 1024&#x0A;set remote memory-write-packet-size fixed&#x0A;set remote memory-read-packet-size 1024&#x0A;set remote memory-read-packet-size fixed&#x0A;set remote hardware-watchpoint-limit 2&#x0A;set remote hardware-breakpoint-limit 2&#x0A;load&#x0A;tb main&#x0A;continue&#x0A;" />
-				</remote_debugging>
 				<remote_debugging target="Debug FLASH">
 					<options conn_type="0" serial_baud="115200" ip_address="localhost" ip_port="2000" additional_cmds="monitor soft_reset_halt&#x0A;monitor mww 0xFFFFFF00 0x01&#x0A;monitor arm7_9 force_hw_bkpts enable&#x0A;set remote memory-write-packet-size 1024&#x0A;set remote memory-write-packet-size fixed&#x0A;set remote memory-read-packet-size 1024&#x0A;set remote memory-read-packet-size fixed&#x0A;set remote hardware-watchpoint-limit 2&#x0A;set remote hardware-breakpoint-limit 2&#x0A;load&#x0A;tb main&#x0A;continue&#x0A;" />
+				</remote_debugging>
+				<remote_debugging target="Debug RAM">
+					<options conn_type="0" serial_baud="115200" ip_address="localhost" ip_port="2000" additional_cmds="monitor soft_reset_halt&#x0A;monitor mww 0xFFFFFF00 0x01&#x0A;monitor reg pc 0x20000000&#x0A;monitor ARM7_9 sw_bkpts enable&#x0A;set remote memory-write-packet-size 1024&#x0A;set remote memory-write-packet-size fixed&#x0A;set remote memory-read-packet-size 1024&#x0A;set remote memory-read-packet-size fixed&#x0A;set remote hardware-watchpoint-limit 2&#x0A;set remote hardware-breakpoint-limit 2&#x0A;load&#x0A;tb main&#x0A;continue&#x0A;" />
 				</remote_debugging>
 			</debugger>
 			<mcu>
 				<device family="STR7" device="STR715FRx" />
 			</mcu>
 			<gdbremote>
-				<hardware interface="ft2232" option="olimex-jtag" deviceport="0" jtagspeed="4" gdbport="2000" configfile="openocd.cfg" auto="false" telnetport="4444" />
+				<hardware interface="ft2232" option="olimex-jtag" deviceport="0" jtagspeed="4" gdbport="2000" configfile="openocd.cfg" auto="false" telnetport="4444" tclport="0" />
 			</gdbremote>
+			<gdbremote-STR7specific unprotect_flash="false" />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

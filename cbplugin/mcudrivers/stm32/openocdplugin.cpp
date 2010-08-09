@@ -39,7 +39,10 @@ int OpenOCDPlugin::OnWriteConfigFile(wxFile &file)
         cfgFile += '\n';
     }
 
-    /* Do some quick and dirty template replace. */
+    /* Now start placeholder replacement. First one speed. */
+    cfgFile.Replace(_T("@@ADAPTER_KHZ@@"), m_JTAGSpeed);
+
+    /* Work area size. */
     m_RAMSize.ToULong(&size, 10);
     size *= 1024;
     s = wxString::Format(_T("%d"), size);
@@ -74,8 +77,8 @@ bool OpenOCDPlugin::ReadConfigData()
 
     if (!(root == NULL)) {
         // Get flash size
-        TiXmlElement* flash = root->FirstChildElement("RAM");
-        m_RAMSize = wxString::FromAscii(flash->Attribute("size"));
+        TiXmlElement* ram = root->FirstChildElement("RAM");
+        m_RAMSize = wxString::FromAscii(ram->Attribute("size"));
     }
 
     return true;

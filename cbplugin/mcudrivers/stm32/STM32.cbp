@@ -65,11 +65,12 @@
 		</ExtraCommands>
 		<Unit filename="STM32.cpp" />
 		<Unit filename="STM32.h" />
-		<Unit filename="STM32.xml" />
 		<Unit filename="STM32generaloptions.cpp" />
 		<Unit filename="STM32generaloptions.h" />
 		<Unit filename="openocdplugin.cpp" />
 		<Unit filename="openocdplugin.h" />
+		<Unit filename="resources\STM32.xml" />
+		<Unit filename="resources\stm32.cfg" />
 		<Unit filename="wxsmith\STM32GeneralOptions.wxs" />
 		<Extensions>
 			<code_completion />

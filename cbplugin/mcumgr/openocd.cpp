@@ -472,13 +472,6 @@ int OpenOCDDriver::WriteConfigFile(void)
         of.Write(m_Interface);
     }
 
-    str = _T("\njtag_khz ") + m_JTAGSpeed;
-    of.Write(str);
-
-    of.Write(_T("\n\njtag_nsrst_delay 100"));
-    of.Write(_T("\njtag_ntrst_delay 100"));
-    of.Write(_T("\n\n"));
-
     // The plugin can write the rest
     int nRet = OnWriteConfigFile(of);
     of.Close();

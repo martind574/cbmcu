@@ -22,115 +22,72 @@ OpenOCDPlugin::~OpenOCDPlugin()
 int OpenOCDPlugin::OnWriteConfigFile(wxFile &file)
 {
     wxString s, basePart;
+    wxString cfgFile;
+    wxString familyCfg;
+    unsigned long size;
 
-    file.Write(_T("\n"));
-
+    /* Read the openocd config file into a single wxString. */
     if (m_Part.Left(5) == _T("STR71")) {
-        WriteConfigSTR71(file);
+        familyCfg = _T("str710.cfg");
     } else if (m_Part.Left(5) == _T("STR73")) {
-        WriteConfigSTR73(file);
+        familyCfg = _T("str730.cfg");
     } else if (m_Part.Left(5) == _T("STR75")) {
-        WriteConfigSTR75(file);
+        familyCfg = _T("str750.cfg");
     }
 
-    // JTAG speed and halt target
-    file.Write(_T("\n\n# Init"));
-    file.Write(_T("\njtag_khz 10"));
-    file.Write(_T("\ninit"));
-    file.Write(_T("\nsoft_reset_halt"));     // Always halt target
+    wxString pluginDir = ConfigManager::GetFolder(sdPluginsGlobal);
+    wxString mcuPluginDir = pluginDir + wxFILE_SEP_PATH + _T("mcudrv");
 
-    return 1;
-}
+    wxFileInputStream cf(mcuPluginDir + wxFILE_SEP_PATH + familyCfg);
+    if (cf.IsOk() == false)
+        return 0;
 
-void OpenOCDPlugin::WriteConfigSTR71(wxFile &file)
-{
-    wxString s;
-
-    file.Write(_T("\n\n# Use combined on interfaces or targets that can't set TRST/SRST separately"));
-    file.Write(_T("\nreset_config trst_and_srst srst_pulls_trst"));
-
-    file.Write(_T("\n\n# JTAG scan chain"));
-    file.Write(_T("\njtag newtap str710 cpu -irlen 4 -ircapture 0x1 -irmask 0x0f -expected-id 0x3f0f0f0f"));
-    file.Write(_T("\ntarget create str710.cpu arm7tdmi -endian little -chain-position str710.cpu -variant arm7tdmi"));
-
-    // Write speed after reset issued
-    //wxString s;
-    //file.Write(_T("\nstr710.cpu configure -event reset-init { jtag_khz "));
-    //file.Write(m_JTAGSpeed);
-    //file.Write(_T("}"));
-
-    if (m_UnprotectFlash == true) {
-        file.Write(_T("\nstr710.cpu configure -event gdb-flash-erase-start { \
-            \n\tflash protect 0 0 7 off \
-            \n\tflash protect 1 0 1 off \
-            \n}"));
+    wxTextInputStream text(cf);
+    while(cf.IsOk() && !cf.Eof() )
+    {
+        wxString line = text.ReadLine();
+        cfgFile += line;
+        cfgFile += '\n';
     }
 
-    file.Write(_T("\nstr710.cpu configure -work-area-virt 0 -work-area-phys 0x2000C000 -work-area-size 0x4000 -work-area-backup 0"));
+    /* Now start placeholder replacement. First one speed. */
+    cfgFile.Replace(_T("@@ADAPTER_KHZ@@"), m_JTAGSpeed);
 
-    // Flash banks
-    file.Write(_T("\n\n#flash bank str7x <base> <size> 0 0 <target#> <variant>"));
+    /* Set work area size. */
+    m_RAMSize.ToULong(&size, 10);
+    size *= 1024;
+    s = wxString::Format(_T("%d"), size);
+
+    cfgFile.Replace(_T("@@WORK_AREA_SIZE@@"), s);
+
+     // Now we need to get target name from manager
+    cbProject *project = Manager::Get()->GetProjectManager()->GetActiveProject();
+    wxString strTarget = project->GetActiveBuildTarget();
+    ProjectBuildTarget *target = project->GetBuildTarget(strTarget);
+    wxString strOutFile = target->GetOutputFilename();
+    while (strOutFile.Replace(_T("\\"), _T("/")));
+
+    cfgFile.Replace(_T("@@OUTPUT_FILE@@"), strOutFile);
+
+    /* Write the flash information. */
     size_t NumItems = m_FlashBlocks.GetCount();
     for (size_t n = 0; n < NumItems; n++) {
 
         FlashMem mem = m_FlashBlocks[n];
 
-        s = wxString::Format(wxT("\nflash bank str7x %s %s 0 0 0 %s"),
-            mem.m_Base.wx_str(), mem.m_Len.wx_str(), mem.m_Variant.wx_str());
-        file.Write(s);
+        /* Dynamically create placeholders. */
+        wxString wxFlashBase, wxFlashSize;
+        wxFlashBase.Format(_T("@@FLASH_BANK_BASE_%d@@"), n);
+        wxFlashSize.Format(_T("@@FLASH_BANK_SIZE_%d@@"), n);
+
+        cfgFile.Replace(wxFlashBase, mem.m_Base.wx_str());
+        cfgFile.Replace(wxFlashSize, mem.m_Len.wx_str());
     }
+
+    file.Write(cfgFile);
+
+    return 1;
 }
-
-void OpenOCDPlugin::WriteConfigSTR73(wxFile &file)
-{
-    // JTAG
-    /*file.Write(_T("\ntarget create str710.cpu arm7tdmi -endian little -chain-position str710.cpu -variant arm7tdmi"));
-    file.Write(_T("\nstr710.cpu configure -event reset-start { jtag_khz 10 }"));
-    file.Write(_T("\nstr710.cpu configure -event reset-init { jtag_khz 6000 }"));
-    file.Write(_T("\nstr710.cpu configure -event gdb-flash-erase-start { \
-        \nflash protect 0 0 7 off \
-        \nflash protect 1 0 1 off \
-        \n}"));
-
-    file.Write(_T("\nstr710.cpu configure -work-area-virt 0 -work-area-phys 0x2000C000 -work-area-size 0x4000 -work-area-backup 0"));
-
-    //#flash bank str7x <base> <size> 0 0 <target#> <variant>
-    //flash bank str7x 0x40000000 0x00040000 0 0 0 STR71x
-    //flash bank str7x 0x400C0000 0x00004000 0 0 0 STR71x
-    wxString s;
-    s = wxString::Format(wxT("\nflash bank str7x %s %s 0 0 0 %s"),
-        m_FlashBase.wx_str(), m_FlashLen.wx_str(), m_FlashVariant.wx_str());
-    file.Write(s);*/
-
-}
-
-void OpenOCDPlugin::WriteConfigSTR75(wxFile &file)
-{
-    // JTAG
-    /*file.Write(_T("\ntarget create str710.cpu arm7tdmi -endian little -chain-position str710.cpu -variant arm7tdmi"));
-    file.Write(_T("\nstr710.cpu configure -event reset-start { jtag_khz 10 }"));
-    file.Write(_T("\nstr710.cpu configure -event reset-init { jtag_khz 6000 }"));
-    file.Write(_T("\nstr710.cpu configure -event gdb-flash-erase-start { \
-        \nflash protect 0 0 7 off \
-        \nflash protect 1 0 1 off \
-        \n}"));
-
-    file.Write(_T("\nstr710.cpu configure -work-area-virt 0 -work-area-phys 0x2000C000 -work-area-size 0x4000 -work-area-backup 0"));
-
-    //#flash bank str7x <base> <size> 0 0 <target#> <variant>
-    //flash bank str7x 0x40000000 0x00040000 0 0 0 STR71x
-    //flash bank str7x 0x400C0000 0x00004000 0 0 0 STR71x
-    wxString s;
-    s = wxString::Format(wxT("\nflash bank str7x %s %s 0 0 0 %s"),
-        m_FlashBase.wx_str(), m_FlashLen.wx_str(), m_FlashVariant.wx_str());
-    file.Write(s); */
-}
-
-/*void OpenOCD::DevSpecDlg()
-{
-    STR7Opts od(Manager::Get()->GetAppWindow());
-    od.ShowModal();
-}*/
 
 bool OpenOCDPlugin::ReadConfigData()
 {
@@ -166,6 +123,10 @@ bool OpenOCDPlugin::ReadConfigData()
 
             flash = flash->NextSiblingElement("Flash");
         }
+
+        // Get RAM data
+        TiXmlElement* ram = root->FirstChildElement("RAM");
+        m_RAMSize = wxString::FromAscii(ram->Attribute("size"));
     }
 
     return true;
