@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <wxsmith>
 	<object class="wxDialog" name="ConfigSettingsDialog">
+		<title>OpenOCD settings</title>
 		<size>474,473</size>
 		<minsize>-1,-1</minsize>
 		<id_arg>0</id_arg>

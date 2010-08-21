@@ -63,10 +63,11 @@
 		<Unit filename="mainpanel.h" />
 		<Unit filename="mcumain.cpp" />
 		<Unit filename="mcumain.h" />
+		<Unit filename="openocdintloc.cpp" />
+		<Unit filename="openocdintloc.h" />
 		<Unit filename="resources\manifest.xml" />
 		<Unit filename="resources\mcu_toolbar.xrc" />
 		<Unit filename="resources\mcu_toolbar_16x16.xrc" />
-		<Unit filename="wxsmith\mainpanel.wxs" />
 		<Extensions>
 			<code_completion />
 			<envvars />
@@ -76,6 +77,8 @@
 				<resources>
 					<wxPanel wxs="wxsmith/McuPanel.wxs" src="McuPanel.cpp" hdr="McuPanel.h" xrc="McuPanel.xrc" name="McuPanel" language="CPP" />
 					<wxPanel wxs="wxsmith/mainpanel.wxs" src="mainpanel.cpp" hdr="mainpanel.h" xrc="resources/mainpanel.xrc" name="mainpanel" language="CPP" />
+					<wxPanel wxs="wxsmith/openocdintloc.wxs" src="openocdintloc.cpp" hdr="openocdintloc.h" name="openocdintloc" language="CPP" />
+					<wxPanel wxs="wxsmith/openocdset.wxs" src="openocdset.cpp" hdr="openocdset.h" name="openocdset" language="CPP" />
 				</resources>
 			</wxsmith>
 		</Extensions>

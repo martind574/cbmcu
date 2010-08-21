@@ -15,7 +15,9 @@
 #include "remtargdrv.h"
 #include "telnetclient.h"
 #include "configsettingspanel.h"
+#include "openocdintdev.h"
 #include "openocdconfig.h"
+#include "openocdset.h"
 
 typedef enum CRS
 {
@@ -63,7 +65,7 @@ protected:
 
     wxString m_Interface;       // Device interface
     wxString m_Option;          // Interface option
-    int m_DevicePort;
+    //int m_DevicePort;
     wxString m_JTAGSpeed;       // JTAG speed
     int m_GDBPort;
     wxString m_ConfigFile;      // Config file
@@ -71,7 +73,10 @@ protected:
     int m_TelnetPort;           // Telnet port used to talk to OpenOCD
     int m_TCLPort;              // TCL control machine interface
     wxString m_ProgramPath;     // Actual location of OpenOCD binary
-    OpenOCDConfig *m_Config;    // Config page
+    AdvOptsHash m_AdvOpts;      // Advanced interface options
+
+    OpenOCDConfig *m_Config;    // Mainly interface settings
+    OpenOCDSet *m_Settings;     // Settings page
 
     //cbProject *m_pProject;
     bool m_bStarted;

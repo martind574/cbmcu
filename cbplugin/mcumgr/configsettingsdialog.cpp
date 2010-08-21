@@ -22,8 +22,8 @@ ConfigSettingsDialog::ConfigSettingsDialog(wxWindow* parent,wxWindowID id,const 
 	//(*Initialize(ConfigSettingsDialog)
 	wxBoxSizer* BoxSizer1;
 	wxFlexGridSizer* FlexGridSizer1;
-
-	Create(parent, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE, _T("wxID_ANY"));
+	
+	Create(parent, wxID_ANY, _("OpenOCD settings"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE, _T("wxID_ANY"));
 	SetClientSize(wxSize(474,473));
 	SetMinSize(wxSize(-1,-1));
 	FlexGridSizer1 = new wxFlexGridSizer(2, 1, 0, 0);
@@ -37,7 +37,7 @@ ConfigSettingsDialog::ConfigSettingsDialog(wxWindow* parent,wxWindowID id,const 
 	FlexGridSizer1->Add(BoxSizer1, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
 	SetSizer(FlexGridSizer1);
 	FlexGridSizer1->SetSizeHints(this);
-
+	
 	Connect(ID_BUTTONOK,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&ConfigSettingsDialog::OnButtonOkClick);
 	Connect(ID_BUTTONCANCEL,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&ConfigSettingsDialog::OnButtonCancelClick);
 	//*)

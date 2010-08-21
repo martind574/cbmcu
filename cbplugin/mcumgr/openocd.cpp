@@ -13,6 +13,8 @@
 #include "openocd.h"
 #include "mcupluginmanager.h"
 #include "openocdconfig.h"
+#include "openocdset.h"
+#include "openocddevs.h"
 
 int idProcess = wxNewId();
 int idTimer = wxNewId();
@@ -33,7 +35,6 @@ OpenOCDDriver::OpenOCDDriver() :
     GDBRemoteTargetDriver(),
     m_Interface(_T("parport")),
     m_Option(_T("wiggler")),
-    m_DevicePort(0),
     m_JTAGSpeed(_("0")),
     m_GDBPort(2000),
     m_ConfigFile(_T("openocd.cfg")),
@@ -450,26 +451,32 @@ int OpenOCDDriver::WriteConfigFile(void)
     of.Write(_T("\n\n#interface\ninterface "));
     wxString str;
 
-    if (m_Interface == _T("parport")) {
+    // Write interface.
+    of.Write(m_Interface);
 
-        of.Write(_T("parport"));
-        str = wxString::Format(_T("\nparport_port %x"), GetBaseAddress(m_DevicePort));
-        of.Write(str);
-        of.Write(_T("\nparport_cable "));
-        of.Write(m_Option);
-    } else if (m_Interface == _T("ft2232")) {
+    // Now find option index in array.
+    int item;
 
-        of.Write(_T("ft2232\n"));
+    OpenOCDDevs devs;
 
-        if (m_Option == _T("jtagkey"))
-            of.Write(_T("\nft2232_device_desc \"Amontec JTAGkey\""));
-        else if (m_Option ==_T("olimex-jtag"))
-            of.Write(_T("\nft2232_device_desc \"Olimex OpenOCD JTAG\""));
+    item = devs.FindItem(m_Interface);
+    if (item == -1) {
+        // The item was not found in the list.
+        cbMessageBox(_T("The currently selected interface does not exist."), _("cbmcu plugin error"), wxICON_STOP);
+        return -1;
+    }
 
-        of.Write(_T("\nft2232_layout "));
-        of.Write(m_Option);
-    } else {
-        of.Write(m_Interface);
+    OpenOCDIntDev *pDev = devs.GetInterfaceDevice(item);
+    if (!(pDev == NULL)) {
+        wxString str;
+
+        item = pDev->FindItem(m_Option);
+        if (item == -1) {
+            cbMessageBox(_T("The currently selected device does not exist."), _("cbmcu plugin error"), wxICON_STOP);
+        } else {
+            pDev->BuildDeviceString(item, str);
+            of.Write(str);
+        }
     }
 
     of.Write(_T("\n\n"));
@@ -479,6 +486,7 @@ int OpenOCDDriver::WriteConfigFile(void)
     if (nRet == 0) {
         // Plugin config failed.
         cbMessageBox(_T("Plugin has failed to write configuration"), _("cbmcu plugin error"), wxICON_STOP);
+        nRet = -1;
     }
     of.Close();
 
@@ -620,42 +628,62 @@ void OpenOCDDriver::OnProjectLoadingHook(cbProject* project, TiXmlElement* elem,
     if (loading) {
         TiXmlElement* node = elem->FirstChildElement("gdbremote");
         if (node) {
+
             TiXmlElement *device = node->FirstChildElement("hardware");
+
             m_Interface = cbC2U(device->Attribute("interface"));
             m_Option = cbC2U(device->Attribute("option"));
-            m_DevicePort = atoi(device->Attribute("deviceport"));
             m_JTAGSpeed = cbC2U(device->Attribute("jtagspeed"));
             m_GDBPort = atoi(device->Attribute("gdbport"));
             m_ConfigFile = cbC2U(device->Attribute("configfile"));
-            wxString str = cbC2U(device->Attribute("auto"));
+            wxString strAuto = cbC2U(device->Attribute("auto"));
             m_TelnetPort = atoi(device->Attribute("telnetport"));
             m_TCLPort = atoi(device->Attribute("tclport"));
-            if (str == _T("true"))
+            if (strAuto == _T("true"))
                 m_Auto = true;
             else
                 m_Auto = false;
 
+            // Now get advanced options.
+            TiXmlElement *advopts = node->FirstChildElement("advintopts");
+            if (advopts) {
+
+                TiXmlAttribute *attr = advopts->FirstAttribute();
+                while (attr) {
+
+                    // Populate hash map with attributes.
+                    wxString key = cbC2U(attr->Name());
+                    wxString value = cbC2U(attr->Value());
+
+                    m_AdvOpts[key] = value;
+
+                    attr = attr->Next();
+                }
+            }
+
         } else {
             m_Interface = _T("parport");
             m_Option = _T("wiggler");
-            m_DevicePort = 0;
             m_JTAGSpeed = _T("0");
             m_ConfigFile = _T("openocd.cfg");
             m_Auto = true;
             m_TelnetPort = 4444;
             m_GDBPort = 2000;
             m_TCLPort = 6666;
+            m_AdvOpts.clear();
 
         }
     } else {
+
         TiXmlElement* node = elem->FirstChildElement("gdbremote");
         if (!node)
             node = elem->InsertEndChild(TiXmlElement("gdbremote"))->ToElement();
         node->Clear();
+
         TiXmlElement *device = node->InsertEndChild(TiXmlElement("hardware"))->ToElement();
+
         device->SetAttribute("interface", cbU2C(m_Interface));
         device->SetAttribute("option", cbU2C(m_Option));
-        device->SetAttribute("deviceport", m_DevicePort);
         device->SetAttribute("jtagspeed", cbU2C(m_JTAGSpeed));
         device->SetAttribute("gdbport", m_GDBPort);
         device->SetAttribute("configfile", cbU2C(m_ConfigFile));
@@ -665,6 +693,19 @@ void OpenOCDDriver::OnProjectLoadingHook(cbProject* project, TiXmlElement* elem,
             device->SetAttribute("auto", "false");
         device->SetAttribute("telnetport", m_TelnetPort);
         device->SetAttribute("tclport", m_TCLPort);
+
+        // Write advanced options
+        TiXmlElement *advopts = node->InsertEndChild(TiXmlElement("advintopts"))->ToElement();
+
+        AdvOptsHash::iterator it;
+        for( it = m_AdvOpts.begin(); it != m_AdvOpts.end(); ++it )
+        {
+            wxString key = it->first, value = it->second;
+            // do something useful with key and value
+
+            advopts->SetAttribute(cbU2C(key), cbU2C(value));
+        }
+
     }
 }
 
@@ -679,24 +720,29 @@ void OpenOCDDriver::OnProjectLoadingHook(cbProject* project, TiXmlElement* elem,
 bool OpenOCDDriver::OnConfigSettings(ConfigSettingsPanel *panel)
 {
     m_Config = new OpenOCDConfig(panel->NotebookConfigPanels);
+    m_Settings = new OpenOCDSet(panel->NotebookConfigPanels);
 
     m_Config->m_Interface = m_Interface;
     m_Config->m_Option = m_Option;
-    m_Config->m_DevicePort = m_DevicePort;
     m_Config->m_Speed = m_JTAGSpeed;
     m_Config->m_Auto = m_Auto;
     m_Config->m_ConfigFile = m_ConfigFile;
-    m_Config->m_TelnetPort = m_TelnetPort;
-    m_Config->m_ProgramPath = m_ProgramPath;
-    m_Config->m_GDBPort = m_GDBPort;
-    m_Config->m_TCLPort = m_TCLPort;
+    m_Config->m_AdvOpts = m_AdvOpts;
+
+    m_Settings->m_ProgramPath = m_ProgramPath;
+    m_Settings->m_GDBPort = m_GDBPort;
+    m_Settings->m_TelnetPort = m_TelnetPort;
+    m_Settings->m_TCLPort = m_TCLPort;
 
     // Now load the dialogs settings
     m_Config->LoadSettings();
+    m_Settings->LoadSettings();
 
-    // Add our page
-    wxString str = _T("OpenOCD");
-    panel->AddPage((wxPanel*)m_Config, str);
+    // Add our pages
+    wxString name(_T("&Interface"));
+    panel->AddPage((wxPanel*)m_Config, name);
+    name = _T("&Settings");
+    panel->AddPage((wxPanel*)m_Settings, name);
 
     return true;
 }
@@ -711,20 +757,22 @@ bool OpenOCDDriver::OnConfigSettings(ConfigSettingsPanel *panel)
 bool OpenOCDDriver::OnConfigApply(void)
 {
     m_Config->SaveSettings();
+    m_Settings->SaveSettings();
 
+    // Get data from interface panel.
     m_Interface = m_Config->m_Interface;
     m_Option = m_Config->m_Option;
-    m_DevicePort = m_Config->m_DevicePort;
     m_JTAGSpeed = m_Config->m_Speed;
-    m_GDBPort = m_Config->m_GDBPort;
     m_Auto = m_Config->m_Auto;
     m_ConfigFile = m_Config->m_ConfigFile;
-    m_TelnetPort = m_Config->m_TelnetPort;
-    m_GDBPort = m_Config->m_GDBPort;
-    m_TCLPort = m_Config->m_TCLPort;
+    m_AdvOpts = m_Config->m_AdvOpts;
 
-    // Get program path from ConfigManager
-    m_ProgramPath = m_Config->m_ProgramPath;
+    // Get data from settings panel.
+    m_ProgramPath = m_Settings->m_ProgramPath;
+    m_GDBPort = m_Settings->m_GDBPort;
+    m_TelnetPort = m_Settings->m_TelnetPort;
+    m_TCLPort = m_Settings->m_TCLPort;
+
     ConfigManager* cfg = Manager::Get()->GetConfigManager(_T("mcumanager"));
     cfg->Write(_T("/programpath"), m_ProgramPath);
 

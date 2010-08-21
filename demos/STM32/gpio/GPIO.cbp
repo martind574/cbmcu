@@ -123,7 +123,8 @@
 				<device family="STM32" device="STM32F103VB" />
 			</mcu>
 			<gdbremote>
-				<hardware interface="ft2232" option="olimex-jtag" deviceport="0" jtagspeed="500" gdbport="2000" configfile="openocd.cfg" auto="true" telnetport="4444" tclport="6666" />
+				<hardware interface="ft2232" option="Olimex OpenOCD JTAG" jtagspeed="500" gdbport="2000" configfile="openocd.cfg" auto="true" telnetport="4444" tclport="6666" />
+				<advintopts parport_addr="LPT2" />
 			</gdbremote>
 		</Extensions>
 	</Project>

@@ -70,6 +70,8 @@ If GDB fails, OpenOCD does not exit.]]>
 		<Unit filename="configsettingsdialog.h" />
 		<Unit filename="configsettingspanel.cpp" />
 		<Unit filename="configsettingspanel.h" />
+		<Unit filename="devparportadvopts.cpp" />
+		<Unit filename="devparportadvopts.h" />
 		<Unit filename="mcuconfigmanager.cpp" />
 		<Unit filename="mcuconfigmanager.h" />
 		<Unit filename="mcudebugdrivermanager.cpp" />
@@ -82,13 +84,25 @@ If GDB fails, OpenOCD does not exit.]]>
 		<Unit filename="openocd.h" />
 		<Unit filename="openocdconfig.cpp" />
 		<Unit filename="openocdconfig.h" />
+		<Unit filename="openocddevftdi.cpp" />
+		<Unit filename="openocddevftdi.h" />
+		<Unit filename="openocddevparport.cpp" />
+		<Unit filename="openocddevparport.h" />
+		<Unit filename="openocddevs.cpp" />
+		<Unit filename="openocddevs.h" />
+		<Unit filename="openocdintdev.cpp" />
+		<Unit filename="openocdintdev.h" />
+		<Unit filename="openocdset.cpp" />
+		<Unit filename="openocdset.h" />
 		<Unit filename="remtargdrv.cpp" />
 		<Unit filename="remtargdrv.h" />
 		<Unit filename="telnetclient.cpp" />
 		<Unit filename="telnetclient.h" />
 		<Unit filename="wxsmith\ConfigSettingsDialog.wxs" />
 		<Unit filename="wxsmith\ConfigSettingsPanel.wxs" />
+		<Unit filename="wxsmith\DevParportAdvOpts.wxs" />
 		<Unit filename="wxsmith\OpenOCDConfig.wxs" />
+		<Unit filename="wxsmith\OpenOCDSet.wxs" />
 		<Extensions>
 			<code_completion />
 			<envvars />
@@ -101,6 +115,8 @@ If GDB fails, OpenOCD does not exit.]]>
 					<wxPanel wxs="wxsmith/ConfigSettingsPanel.wxs" src="configsettingspanel.cpp" hdr="configsettingspanel.h" name="ConfigSettingsPanel" language="CPP" />
 					<wxDialog wxs="wxsmith/ConfigSettingsDialog.wxs" src="configsettingsdialog.cpp" hdr="configsettingsdialog.h" name="ConfigSettingsDialog" language="CPP" />
 					<wxPanel wxs="wxsmith/OpenOCDConfig.wxs" src="openocdconfig.cpp" hdr="openocdconfig.h" name="OpenOCDConfig" language="CPP" />
+					<wxPanel wxs="wxsmith/OpenOCDSet.wxs" src="openocdset.cpp" hdr="openocdset.h" name="OpenOCDSet" language="CPP" />
+					<wxDialog wxs="wxsmith/DevParportAdvOpts.wxs" src="devparportadvopts.cpp" hdr="devparportadvopts.h" name="DevParportAdvOpts" language="CPP" />
 				</resources>
 			</wxsmith>
 		</Extensions>

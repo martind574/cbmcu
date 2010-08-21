@@ -11,121 +11,6 @@
 					<cols>1</cols>
 					<rows>2</rows>
 					<object class="sizeritem">
-						<object class="wxStaticBoxSizer" variable="StaticBoxSizer3" member="no">
-							<label>Program location</label>
-							<orient>wxVERTICAL</orient>
-							<object class="sizeritem">
-								<object class="wxFlexGridSizer" variable="FlexGridSizer7" member="no">
-									<cols>3</cols>
-									<object class="sizeritem">
-										<object class="wxStaticText" name="ID_STATICTEXT6" variable="StaticText6" member="yes">
-											<label>openocd.exe:</label>
-										</object>
-										<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
-										<border>5</border>
-										<option>1</option>
-									</object>
-									<object class="sizeritem">
-										<object class="wxTextCtrl" name="ID_TEXTCTRLPROGRAMLOCATION" variable="TextCtrlProgramPath" member="yes">
-											<value>Text</value>
-											<size>244,21</size>
-										</object>
-										<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
-										<border>5</border>
-										<option>1</option>
-									</object>
-									<object class="sizeritem">
-										<object class="wxButton" name="ID_BUTTON2" variable="Button2" member="yes">
-											<label>Select...</label>
-											<handler function="OnButton2Click" entry="EVT_BUTTON" />
-										</object>
-										<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
-										<border>5</border>
-										<option>1</option>
-									</object>
-								</object>
-								<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
-								<border>5</border>
-								<option>1</option>
-							</object>
-							<object class="sizeritem">
-								<object class="wxFlexGridSizer" variable="FlexGridSizer9" member="no">
-									<cols>3</cols>
-									<object class="sizeritem">
-										<object class="wxStaticText" name="ID_STATICTEXT7" variable="StaticText7" member="yes">
-											<label>GDB Port:</label>
-										</object>
-										<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
-										<border>5</border>
-										<option>1</option>
-									</object>
-									<object class="sizeritem">
-										<object class="wxTextCtrl" name="ID_TEXTCTRLGDBPORT" variable="TextCtrlGDBPort" member="yes">
-											<value>Text</value>
-										</object>
-										<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
-										<border>5</border>
-										<option>1</option>
-									</object>
-								</object>
-								<flag>wxALL|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
-								<border>5</border>
-								<option>1</option>
-							</object>
-							<object class="sizeritem">
-								<object class="wxFlexGridSizer" variable="FlexGridSizer6" member="no">
-									<cols>3</cols>
-									<object class="sizeritem">
-										<object class="wxStaticText" name="ID_STATICTEXT5" variable="StaticText5" member="yes">
-											<label>Telnet port:</label>
-										</object>
-										<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
-										<border>5</border>
-										<option>1</option>
-									</object>
-									<object class="sizeritem">
-										<object class="wxTextCtrl" name="ID_TEXTCTRLTELNETPORT" variable="TextCtrlTelnetPort" member="yes">
-											<value>Text</value>
-										</object>
-										<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
-										<border>5</border>
-										<option>1</option>
-									</object>
-								</object>
-								<flag>wxALL|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
-								<border>5</border>
-								<option>1</option>
-							</object>
-							<object class="sizeritem">
-								<object class="wxFlexGridSizer" variable="FlexGridSizer11" member="no">
-									<cols>3</cols>
-									<object class="sizeritem">
-										<object class="wxStaticText" name="ID_STATICTEXT9" variable="StaticText9" member="yes">
-											<label>TCL port:</label>
-										</object>
-										<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
-										<border>5</border>
-										<option>1</option>
-									</object>
-									<object class="sizeritem">
-										<object class="wxTextCtrl" name="ID_TEXTCTRLTCLPORT" variable="TextCtrlTclPort" member="yes">
-											<value>Text</value>
-										</object>
-										<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
-										<border>5</border>
-										<option>1</option>
-									</object>
-								</object>
-								<flag>wxALL|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
-								<border>5</border>
-								<option>1</option>
-							</object>
-						</object>
-						<flag>wxALL|wxALIGN_TOP|wxALIGN_CENTER_HORIZONTAL</flag>
-						<border>5</border>
-						<option>1</option>
-					</object>
-					<object class="sizeritem">
 						<object class="wxStaticBoxSizer" variable="StaticBoxSizer1" member="no">
 							<label>Hardware</label>
 							<orient>wxVERTICAL</orient>
@@ -171,7 +56,7 @@
 									<object class="sizeritem">
 										<object class="wxChoice" name="ID_CHOICEOPTION" variable="ChoiceOption" member="yes">
 											<selection>0</selection>
-											<size>139,21</size>
+											<size>213,21</size>
 										</object>
 										<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
 										<border>5</border>
@@ -186,22 +71,9 @@
 								<object class="wxFlexGridSizer" variable="FlexGridSizer2" member="no">
 									<cols>3</cols>
 									<object class="sizeritem">
-										<object class="wxStaticText" name="ID_STATICTEXT2" variable="StaticText2" member="yes">
-											<label>Port:</label>
-											<size>60,13</size>
-										</object>
-										<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
-										<border>5</border>
-										<option>1</option>
-									</object>
-									<object class="sizeritem">
-										<object class="wxChoice" name="ID_CHOICEPORT" variable="ChoicePort" member="yes">
-											<content>
-												<item>LPT1</item>
-												<item>LPT2</item>
-											</content>
-											<selection>0</selection>
-											<size>85,21</size>
+										<object class="wxButton" name="ID_BUTTON_ADVANCED" variable="ButtonAdvanced" member="yes">
+											<label>Advanced device settings...</label>
+											<handler function="OnButtonAdvancedClick" entry="EVT_BUTTON" />
 										</object>
 										<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
 										<border>5</border>
@@ -294,14 +166,10 @@
 						<option>1</option>
 					</object>
 				</object>
-				<flag>wxALL|wxALIGN_TOP|wxALIGN_CENTER_HORIZONTAL</flag>
+				<flag>wxALL|wxALIGN_LEFT|wxALIGN_TOP</flag>
 				<border>5</border>
 				<option>1</option>
 			</object>
-		</object>
-		<object class="wxFileDialog" variable="FileDialog" member="yes">
-			<message>Select file</message>
-			<style>wxFD_DEFAULT_STYLE|wxFD_OPEN</style>
 		</object>
 	</object>
 </wxsmith>

@@ -17,9 +17,9 @@ END_EVENT_TABLE()
 ConfigSettingsPanel::ConfigSettingsPanel(wxWindow* parent)
 {
 	//(*Initialize(ConfigSettingsPanel)
-	Create(parent, wxID_ANY, wxDefaultPosition, wxSize(520,526), wxTAB_TRAVERSAL, _T("wxID_ANY"));
+	Create(parent, wxID_ANY, wxDefaultPosition, wxSize(531,310), wxTAB_TRAVERSAL, _T("wxID_ANY"));
 	SetMaxSize(wxSize(-1,-1));
-	NotebookConfigPanels = new wxNotebook(this, ID_NOTEBOOKCONFIGPANELS, wxDefaultPosition, wxSize(520,544), 0, _T("ID_NOTEBOOKCONFIGPANELS"));
+	NotebookConfigPanels = new wxNotebook(this, ID_NOTEBOOKCONFIGPANELS, wxPoint(0,0), wxSize(448,416), 0, _T("ID_NOTEBOOKCONFIGPANELS"));
 	//*)
 }
 
