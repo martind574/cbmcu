@@ -242,21 +242,6 @@ int OpenOCDDriver::Start(void)
     int ret;
 
     ClearLog();
-
-    // Do we write the config file?
-    /*if (m_Auto == true) {
-
-        Log(_T("Writing config..."));
-
-        // Write config file
-        if (WriteConfigFile() < 0) {
-            Log(_T("Writing config failed."));
-            return -1;
-        } else {
-            Log(_T("Config file written."));
-        }
-    }*/
-
     Log(_T("Launching process..."));
 
     // Launch the process
@@ -321,12 +306,6 @@ int OpenOCDDriver::Stop(void)
 
         }
 
-        //m_Pid = 0;
-
-        // The following is done in OnProcTerminated
-        //m_bStarted = false;
-        //m_TimerPollDebugger.Stop();
-
         m_rs = Stopping;
 
         return 0;
@@ -366,20 +345,6 @@ int OpenOCDDriver::Program(void)
     CodeBlocksLogEvent evtSwitch(cbEVT_SWITCH_TO_LOG_WINDOW, m_pLog);
     Manager::Get()->ProcessEvent(evtSwitch);
 
-    // Do we write the config file?
-    /*if (m_Auto == true) {
-
-        Log(_T("Writing config..."));
-
-        // Write config file
-        if (WriteConfigFile() < 0) {
-            Log(_T("Writing config failed."));
-            return -1;
-        } else {
-            Log(_T("Config file written."));
-        }
-    }*/
-
     Log(_T("Launching process..."));
 
     // Launch the process
@@ -387,9 +352,10 @@ int OpenOCDDriver::Program(void)
     ret = Launch();
     if (ret == 0) {
 
+        // Let system know we are in programming state.
         m_rs = Programming;
 
-        // Execute tcl script to program flash
+        // Execute tcl script to program flash.
         Log(_T("Programming..."));
         m_ocdint->Program();
 
