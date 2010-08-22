@@ -115,15 +115,18 @@
 		<Extensions>
 			<code_completion />
 			<debugger>
+				<remote_debugging>
+					<options conn_type="0" serial_baud="115200" additional_cmds="monitor init&#x0A;monitor reset halt&#x0A;b main&#x0A;c" />
+				</remote_debugging>
 				<remote_debugging target="Debug">
-					<options conn_type="0" serial_baud="115200" ip_address="localhost" ip_port="2000" additional_cmds="b main&#x0A;c" />
+					<options conn_type="0" serial_baud="115200" ip_address="localhost" ip_port="2000" />
 				</remote_debugging>
 			</debugger>
 			<mcu>
 				<device family="STM32" device="STM32F103VB" />
 			</mcu>
 			<gdbremote>
-				<hardware interface="ft2232" option="Olimex OpenOCD JTAG" jtagspeed="500" gdbport="2000" configfile="openocd.cfg" auto="true" telnetport="4444" tclport="6666" />
+				<hardware interface="ft2232" option="Olimex OpenOCD JTAG" jtagspeed="1000" gdbport="2000" configfile="openocd.cfg" auto="true" telnetport="4444" tclport="6666" />
 				<advintopts parport_addr="LPT2" />
 			</gdbremote>
 		</Extensions>
