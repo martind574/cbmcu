@@ -3,7 +3,7 @@
 
 #include "mainpanel.h"
 #include "mcupluginmanager.h"
-#include "MicroTreeInfo.h"
+#include "microtreeinfo.h"
 #include "tinyxml/tinyxml.h"
 
 //(*InternalHeaders(mainpanel)

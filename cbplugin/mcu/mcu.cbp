@@ -57,8 +57,8 @@
 		<Linker>
 			<Add directory="$(#cb)" />
 		</Linker>
-		<Unit filename="MicroTreeInfo.cpp" />
-		<Unit filename="MicroTreeInfo.h" />
+		<Unit filename="microtreeinfo.cpp" />
+		<Unit filename="microtreeinfo.h" />
 		<Unit filename="mainpanel.cpp" />
 		<Unit filename="mainpanel.h" />
 		<Unit filename="mcumain.cpp" />
