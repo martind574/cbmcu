@@ -28,6 +28,7 @@ public:
     virtual int Reset(void);    // Perform hardware reset
     virtual int Program(void);  // Program the target
     virtual void OnProjectLoadingHook(cbProject* project, TiXmlElement* elem, bool loading);
+    virtual void OnNewProject(cbProject *project);
     virtual void OnOpenProject(void);
     virtual void OnIdle(wxIdleEvent &event);
     virtual bool OnConfigSettings(ConfigSettingsPanel *panel);

@@ -17,18 +17,26 @@ GDBRemoteTargetDriver *mcuDebugDriverManager::GetDebuggerDriver()
 
 void mcuDebugDriverManager::OnIdle(wxIdleEvent &event)
 {
-    if (m_pGDBTarg) m_pGDBTarg->OnIdle(event);
+    if (m_pGDBTarg)
+        m_pGDBTarg->OnIdle(event);
+}
+
+void mcuDebugDriverManager::OnNewProject(cbProject *project)
+{
+    if (m_pGDBTarg)
+        m_pGDBTarg->OnNewProject(project);
 }
 
 void mcuDebugDriverManager::OnOpenProject(void)
 {
     if (m_pGDBTarg)
-        return m_pGDBTarg->OnOpenProject();
+        m_pGDBTarg->OnOpenProject();
 }
 
 void mcuDebugDriverManager::OnProjectLoadingHook(cbProject* project, TiXmlElement* elem, bool loading)
 {
-    if (m_pGDBTarg) m_pGDBTarg->OnProjectLoadingHook(project, elem, loading);
+    if (m_pGDBTarg)
+        m_pGDBTarg->OnProjectLoadingHook(project, elem, loading);
 }
 
 int mcuDebugDriverManager::Start()

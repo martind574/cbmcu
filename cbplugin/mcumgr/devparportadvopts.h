@@ -39,7 +39,6 @@ class DevParportAdvOpts: public wxDialog
 	private:
 
 		//(*Handlers(DevParportAdvOpts)
-		void OnChoicePortSelect(wxCommandEvent& event);
 		//*)
 
 		DECLARE_EVENT_TABLE()

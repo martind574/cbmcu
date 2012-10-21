@@ -4,70 +4,69 @@
 	<Project>
 		<Option title="mcu" />
 		<Option pch_mode="2" />
-		<Option compiler="mingw" />
+		<Option compiler="tdm" />
 		<Build>
 			<Target title="default">
-				<Option output="$(#cb)\devel\share\CodeBlocks\plugins\mcu.dll" prefix_auto="0" extension_auto="0" />
-				<Option object_output="$(#cb)\.objs\plugins\contrib\mcu" />
+				<Option output="$(#cb.devdir)/share/CodeBlocks/plugins/mcu.dll" prefix_auto="0" extension_auto="0" />
+				<Option object_output="$(#cb)/.objs29/plugins/contrib/mcu" />
 				<Option type="3" />
-				<Option compiler="mingw" />
+				<Option compiler="tdm" />
 				<Option parameters="--debug-log --no-check-associations -nd /p=mcu" />
-				<Option host_application="$(#cb)\devel\codeblocks.exe" />
+				<Option host_application="$(#cb)/devel29/codeblocks.exe" />
+				<Option run_host_application_in_terminal="0" />
 				<Compiler>
 					<Add option="-g" />
-					<Add directory="$(#cb)\include" />
-					<Add directory="$(#cb)\sdk\wxscintilla\include" />
+					<Add option="-pipe" />
+					<Add option="-mthreads" />
+					<Add option="-fmessage-length=0" />
+					<Add option="-fexceptions" />
+					<Add option="-Winvalid-pch" />
+					<Add option="-DBUILDING_PLUGIN" />
+					<Add option="-DHAVE_W32API_H" />
+					<Add option="-D__WXMSW__" />
+					<Add option="-DWXUSINGDLL" />
+					<Add option="-DcbDEBUG" />
+					<Add option="-DCB_PRECOMP" />
+					<Add option="-DWX_PRECOMP" />
+					<Add option="-DwxUSE_UNICODE" />
+					<Add directory="$(#cb)/include" />
+					<Add directory="$(#cb)/sdk/wxscintilla/include" />
 					<Add directory="$(#wx.include)" />
-					<Add directory="$(#wx.lib)\gcc_dll\mswu" />
-					<Add directory="$(#cb)\devel" />
-					<Add directory="..\mcumgr" />
+					<Add directory="$(#wx.lib)/gcc_dll$(WX_CFG)/msw$(WX_SUFFIX)" />
+					<Add directory="$(#cb.devdir)" />
+					<Add directory="../mcumgr" />
 				</Compiler>
 				<Linker>
 					<Add option="-Wl,--enable-auto-image-base" />
 					<Add option="-Wl,--enable-auto-import" />
 					<Add library="codeblocks" />
-					<Add library="wxmsw28u" />
-					<Add library="mcumgr.dll" />
-					<Add directory="$(#cb)\devel" />
-					<Add directory="$(#wx.lib)\gcc_dll" />
+					<Add library="wxmsw29u" />
+					<Add library="mcumgr" />
+					<Add directory="$(#cb)" />
+					<Add directory="$(#cb)/devel29" />
+					<Add directory="$(#wx.lib)/gcc_dll$(WX_CFG)" />
 				</Linker>
 				<ExtraCommands>
-					<Add after="$(#zip)\zip -j9 $(#cb)\devel\share\CodeBlocks\mcu.zip resources\manifest.xml resources\*.xrc" />
-					<Add after="$(#zip)\zip -rp $(#cb)\devel\share\CodeBlocks\mcu.zip images\*.*" />
+					<Add after="$(#zip)\zip -j9 $(#cb)\devel29\share\CodeBlocks\mcu.zip resources\manifest.xml resources\*.xrc" />
+					<Add after="$(#zip)\zip -rp $(#cb)\devel29\share\CodeBlocks\mcu.zip images\*.*" />
 				</ExtraCommands>
+				<Environment>
+					<Variable name="$(WX_CFG)" value="" />
+					<Variable name="$(WX_SUFFIX)" value="u" />
+				</Environment>
 			</Target>
 		</Build>
-		<Compiler>
-			<Add option="-pipe" />
-			<Add option="-mthreads" />
-			<Add option="-fmessage-length=0" />
-			<Add option="-fexceptions" />
-			<Add option="-Winvalid-pch" />
-			<Add option="-DBUILDING_PLUGIN" />
-			<Add option="-DHAVE_W32API_H" />
-			<Add option="-D__WXMSW__" />
-			<Add option="-DWXUSINGDLL" />
-			<Add option="-DcbDEBUG" />
-			<Add option="-DCB_PRECOMP" />
-			<Add option="-DWX_PRECOMP" />
-			<Add option="-DwxUSE_UNICODE" />
-			<Add option="-DWXMAKINGDLL_PROPGRID" />
-			<Add option="-DwxPG_USE_WXMODULE=0" />
-		</Compiler>
-		<Linker>
-			<Add directory="$(#cb)" />
-		</Linker>
-		<Unit filename="microtreeinfo.cpp" />
-		<Unit filename="microtreeinfo.h" />
 		<Unit filename="mainpanel.cpp" />
 		<Unit filename="mainpanel.h" />
 		<Unit filename="mcumain.cpp" />
 		<Unit filename="mcumain.h" />
+		<Unit filename="microtreeinfo.cpp" />
+		<Unit filename="microtreeinfo.h" />
 		<Unit filename="openocdintloc.cpp" />
 		<Unit filename="openocdintloc.h" />
-		<Unit filename="resources\manifest.xml" />
-		<Unit filename="resources\mcu_toolbar.xrc" />
-		<Unit filename="resources\mcu_toolbar_16x16.xrc" />
+		<Unit filename="resources/manifest.xml" />
+		<Unit filename="resources/mcu_toolbar.xrc" />
+		<Unit filename="resources/mcu_toolbar_16x16.xrc" />
 		<Extensions>
 			<code_completion />
 			<envvars />
@@ -75,10 +74,10 @@
 			<wxsmith version="1">
 				<gui name="wxWidgets" src="" main="" init_handlers="necessary" language="CPP" />
 				<resources>
-					<wxPanel wxs="wxsmith/McuPanel.wxs" src="McuPanel.cpp" hdr="McuPanel.h" xrc="McuPanel.xrc" name="McuPanel" language="CPP" />
-					<wxPanel wxs="wxsmith/mainpanel.wxs" src="mainpanel.cpp" hdr="mainpanel.h" xrc="resources/mainpanel.xrc" name="mainpanel" language="CPP" />
-					<wxPanel wxs="wxsmith/openocdintloc.wxs" src="openocdintloc.cpp" hdr="openocdintloc.h" name="openocdintloc" language="CPP" />
-					<wxPanel wxs="wxsmith/openocdset.wxs" src="openocdset.cpp" hdr="openocdset.h" name="openocdset" language="CPP" />
+					<wxPanel wxs="wxsmith/McuPanel.wxs" src="McuPanel.cpp" hdr="McuPanel.h" xrc="McuPanel.xrc" fwddecl="0" i18n="1" name="McuPanel" language="CPP" />
+					<wxPanel wxs="wxsmith/mainpanel.wxs" src="mainpanel.cpp" hdr="mainpanel.h" xrc="resources/mainpanel.xrc" fwddecl="0" i18n="1" name="mainpanel" language="CPP" />
+					<wxPanel wxs="wxsmith/openocdintloc.wxs" src="openocdintloc.cpp" hdr="openocdintloc.h" fwddecl="0" i18n="1" name="openocdintloc" language="CPP" />
+					<wxPanel wxs="wxsmith/openocdset.wxs" src="openocdset.cpp" hdr="openocdset.h" fwddecl="0" i18n="1" name="openocdset" language="CPP" />
 				</resources>
 			</wxsmith>
 		</Extensions>

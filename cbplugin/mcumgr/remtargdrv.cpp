@@ -46,6 +46,10 @@ void GDBRemoteTargetDriver::OnProjectLoadingHook(cbProject* project, TiXmlElemen
 {
 }
 
+void GDBRemoteTargetDriver::OnNewProject(cbProject *project)
+{
+}
+
 void GDBRemoteTargetDriver::OnOpenProject(void)
 {
 }

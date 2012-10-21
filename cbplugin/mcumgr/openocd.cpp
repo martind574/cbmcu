@@ -142,7 +142,7 @@ int OpenOCDDriver::Launch(void)
     //TargetDebugLog(_T("Command-line: ") + cmdline);
     //TargetDebugLog(_T("Working dir : ") + wdir);
 
-    m_pProcess = new PipedProcess((void**)&m_pProcess, this, idProcess, true, wdir);
+    m_pProcess = new PipedProcess(&m_pProcess, this, idProcess, true, wdir);
     Log(_("Starting OpenOCD: "));
 
     m_Pid = wxExecute(cmdline, wxEXEC_ASYNC, m_pProcess);
@@ -206,6 +206,20 @@ int OpenOCDDriver::Launch(void)
     m_TimerPollDebugger.Start(100);
 
     return 0;
+}
+
+/*!
+    \brief Called when project is created.
+
+    Set some compiler options.
+*/
+
+void OpenOCDDriver::OnNewProject(void)
+{
+    if (m_Auto == true) {
+
+        Log(_T("Project created, setting options..."));
+    }
 }
 
 /*!

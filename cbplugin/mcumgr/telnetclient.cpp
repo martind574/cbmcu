@@ -90,7 +90,7 @@ bool OpenOCDCmdInt::WriteCmdResponse(const wxString &cmd)
     // Wait for response
     wxChar *data = new wxChar[1024];
 	Read(data, 1024);
-	OutputDebugString(data);
+	//OutputDebugString(data);
 
 	delete[] data;
 

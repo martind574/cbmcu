@@ -14,6 +14,7 @@ class mcuDebugDriverManager
 
         GDBRemoteTargetDriver *GetDebuggerDriver();     // Return pointer to dynamic debug driver object
         void RegisterDriver(GDBRemoteTargetDriver *pDriver);
+        void OnNewProject(cbProject *project);    // New project created
         void OnOpenProject(void);   // Called when project opened
         int Start(void);        // Launch currently created object
         int Pause(void);        // Pause / halt target

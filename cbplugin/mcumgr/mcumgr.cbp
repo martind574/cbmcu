@@ -4,7 +4,7 @@
 	<Project>
 		<Option title="mcumgr" />
 		<Option pch_mode="2" />
-		<Option compiler="gcc" />
+		<Option compiler="tdm" />
 		<Option show_notes="0">
 			<notes>
 				<![CDATA[Per project/build target settings?
@@ -15,57 +15,52 @@ If GDB fails, OpenOCD does not exit.]]>
 		</Option>
 		<Build>
 			<Target title="default">
-				<Option output="$(#cb)\devel\mcumgr.dll" prefix_auto="0" extension_auto="0" />
-				<Option object_output="$(#cb)\.objs\plugins\contrib\mcumgr" />
+				<Option output="$(#cb.devdir)/mcumgr.dll" prefix_auto="0" extension_auto="0" />
+				<Option object_output="$(#cb)/.objs29/plugins/contrib/mcumgr" />
 				<Option type="3" />
-				<Option compiler="mingw" />
+				<Option compiler="tdm" />
 				<Option parameters="--debug-log --no-check-associations -nd /p=mcu" />
-				<Option host_application="$(#cb)\devel\codeblocks.exe" />
+				<Option host_application="$(#cb)/devel/codeblocks.exe" />
+				<Option run_host_application_in_terminal="0" />
 				<Option createStaticLib="1" />
 				<Compiler>
 					<Add option="-Wall" />
 					<Add option="-g" />
-					<Add option="-DBUILD_DLL" />
+					<Add option="-pipe" />
+					<Add option="-mthreads" />
+					<Add option="-fmessage-length=0" />
+					<Add option="-fexceptions" />
+					<Add option="-Winvalid-pch" />
+					<Add option="-DBUILDING_PLUGIN" />
+					<Add option="-DHAVE_W32API_H" />
+					<Add option="-D__WXMSW__" />
+					<Add option="-DWXUSINGDLL" />
+					<Add option="-DcbDEBUG" />
+					<Add option="-DCB_PRECOMP" />
+					<Add option="-DWX_PRECOMP" />
+					<Add option="-DwxUSE_UNICODE" />
+					<Add directory="$(#wx.lib)/gcc_dll$(WX_CFG)/msw$(WX_SUFFIX)" />
+					<Add directory="$(#wx.include)" />
+					<Add directory="$(#cb.include)" />
+					<Add directory="$(#cb)/sdk/wxscintilla/include" />
+					<Add directory="../mcumgr" />
 				</Compiler>
 				<Linker>
-					<Add library="user32" />
+					<Add option="-Wl,--enable-auto-image-base" />
+					<Add option="-Wl,--export-all-symbols" />
+					<Add option="-Wl,--add-stdcall-alias" />
+					<Add library="wxmsw29u" />
+					<Add library="codeblocks" />
+					<Add directory="$(#wx.lib)/gcc_dll$(WX_CFG)" />
+					<Add directory="$(#wx.lib)/gcc_dll$(WX_CFG)/msw$(WX_SUFFIX)" />
+					<Add directory="$(#cb.devdir)" />
 				</Linker>
 			</Target>
 			<Environment>
-				<Variable name="WX_SUFFIX" value="u" />
 				<Variable name="WX_CFG" value="" />
+				<Variable name="WX_SUFFIX" value="u" />
 			</Environment>
 		</Build>
-		<Compiler>
-			<Add option="-pipe" />
-			<Add option="-mthreads" />
-			<Add option="-fmessage-length=0" />
-			<Add option="-fexceptions" />
-			<Add option="-Winvalid-pch" />
-			<Add option="-DHAVE_W32API_H" />
-			<Add option="-D__WXMSW__" />
-			<Add option="-DWXUSINGDLL" />
-			<Add option="-DcbDEBUG" />
-			<Add option="-DCB_PRECOMP" />
-			<Add option="-DWX_PRECOMP" />
-			<Add option="-DBUILDING_PLUGIN" />
-			<Add option="-DwxUSE_UNICODE" />
-			<Add option="-DWXMAKINGDLL_PROPGRID" />
-			<Add option="-DwxPG_USE_WXMODULE=0" />
-			<Add directory="$(#WX.lib)\gcc_dll$(WX_CFG)\msw$(WX_SUFFIX)" />
-			<Add directory="$(#WX.include)" />
-			<Add directory="$(#CB.include)" />
-		</Compiler>
-		<Linker>
-			<Add option="-Wl,--enable-auto-image-base" />
-			<Add option="-Wl,--export-all-symbols" />
-			<Add option="-Wl,--add-stdcall-alias" />
-			<Add library="wxmsw28u" />
-			<Add library="codeblocks" />
-			<Add directory="$(#WX.lib)\gcc_dll$(WX_CFG)" />
-			<Add directory="$(#WX.lib)\gcc_dll$(WX_CFG)\msw$(WX_SUFFIX)" />
-			<Add directory="$(#CB)\devel" />
-		</Linker>
 		<Unit filename="configsettingsdialog.cpp" />
 		<Unit filename="configsettingsdialog.h" />
 		<Unit filename="configsettingspanel.cpp" />
@@ -98,11 +93,11 @@ If GDB fails, OpenOCD does not exit.]]>
 		<Unit filename="remtargdrv.h" />
 		<Unit filename="telnetclient.cpp" />
 		<Unit filename="telnetclient.h" />
-		<Unit filename="wxsmith\ConfigSettingsDialog.wxs" />
-		<Unit filename="wxsmith\ConfigSettingsPanel.wxs" />
-		<Unit filename="wxsmith\DevParportAdvOpts.wxs" />
-		<Unit filename="wxsmith\OpenOCDConfig.wxs" />
-		<Unit filename="wxsmith\OpenOCDSet.wxs" />
+		<Unit filename="wxsmith/ConfigSettingsDialog.wxs" />
+		<Unit filename="wxsmith/ConfigSettingsPanel.wxs" />
+		<Unit filename="wxsmith/DevParportAdvOpts.wxs" />
+		<Unit filename="wxsmith/OpenOCDConfig.wxs" />
+		<Unit filename="wxsmith/OpenOCDSet.wxs" />
 		<Extensions>
 			<code_completion />
 			<envvars />
@@ -111,12 +106,12 @@ If GDB fails, OpenOCD does not exit.]]>
 			<wxsmith version="1">
 				<gui name="wxWidgets" src="" main="" init_handlers="necessary" language="CPP" />
 				<resources>
-					<wxDialog wxs="wxsmith/openocddlg.wxs" src="openocddlg.cpp" hdr="openocddlg.h" xrc="openocddlg.xrc" name="openocddlg" language="CPP" />
-					<wxPanel wxs="wxsmith/ConfigSettingsPanel.wxs" src="configsettingspanel.cpp" hdr="configsettingspanel.h" name="ConfigSettingsPanel" language="CPP" />
-					<wxDialog wxs="wxsmith/ConfigSettingsDialog.wxs" src="configsettingsdialog.cpp" hdr="configsettingsdialog.h" name="ConfigSettingsDialog" language="CPP" />
-					<wxPanel wxs="wxsmith/OpenOCDConfig.wxs" src="openocdconfig.cpp" hdr="openocdconfig.h" name="OpenOCDConfig" language="CPP" />
-					<wxPanel wxs="wxsmith/OpenOCDSet.wxs" src="openocdset.cpp" hdr="openocdset.h" name="OpenOCDSet" language="CPP" />
-					<wxDialog wxs="wxsmith/DevParportAdvOpts.wxs" src="devparportadvopts.cpp" hdr="devparportadvopts.h" name="DevParportAdvOpts" language="CPP" />
+					<wxDialog wxs="wxsmith/openocddlg.wxs" src="openocddlg.cpp" hdr="openocddlg.h" xrc="openocddlg.xrc" fwddecl="0" i18n="1" name="openocddlg" language="CPP" />
+					<wxPanel wxs="wxsmith/ConfigSettingsPanel.wxs" src="configsettingspanel.cpp" hdr="configsettingspanel.h" fwddecl="0" i18n="1" name="ConfigSettingsPanel" language="CPP" />
+					<wxDialog wxs="wxsmith/ConfigSettingsDialog.wxs" src="configsettingsdialog.cpp" hdr="configsettingsdialog.h" fwddecl="0" i18n="1" name="ConfigSettingsDialog" language="CPP" />
+					<wxPanel wxs="wxsmith/OpenOCDConfig.wxs" src="openocdconfig.cpp" hdr="openocdconfig.h" fwddecl="0" i18n="1" name="OpenOCDConfig" language="CPP" />
+					<wxPanel wxs="wxsmith/OpenOCDSet.wxs" src="openocdset.cpp" hdr="openocdset.h" fwddecl="0" i18n="1" name="OpenOCDSet" language="CPP" />
+					<wxDialog wxs="wxsmith/DevParportAdvOpts.wxs" src="devparportadvopts.cpp" hdr="devparportadvopts.h" fwddecl="0" i18n="1" name="DevParportAdvOpts" language="CPP" />
 				</resources>
 			</wxsmith>
 		</Extensions>

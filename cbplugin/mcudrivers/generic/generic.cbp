@@ -4,64 +4,62 @@
 	<Project>
 		<Option title="generic" />
 		<Option pch_mode="2" />
-		<Option compiler="mingw" />
+		<Option compiler="tdm" />
 		<Build>
 			<Target title="default">
-				<Option output="$(#cb)\devel\share\CodeBlocks\plugins\mcudrv\generic.dll" prefix_auto="0" extension_auto="0" />
-				<Option object_output="$(#cb)\.objs\plugins\contrib\mcudrv\generic" />
+				<Option output="$(#cb.devdir)/share/CodeBlocks/plugins/mcudrv/generic.dll" prefix_auto="0" extension_auto="0" />
+				<Option object_output="$(#cb)/.objs/plugins/contrib/mcudrv/generic" />
 				<Option type="3" />
-				<Option compiler="mingw" />
+				<Option compiler="tdm" />
 				<Compiler>
 					<Add option="-g" />
+					<Add option="-pipe" />
+					<Add option="-mthreads" />
+					<Add option="-fmessage-length=0" />
+					<Add option="-fexceptions" />
+					<Add option="-Winvalid-pch" />
+					<Add option="-DBUILDING_PLUGIN" />
+					<Add option="-DHAVE_W32API_H" />
+					<Add option="-D__WXMSW__" />
+					<Add option="-DWXUSINGDLL" />
+					<Add option="-DcbDEBUG" />
+					<Add option="-DCB_PRECOMP" />
+					<Add option="-DWX_PRECOMP" />
+					<Add option="-DwxUSE_UNICODE" />
+					<Add directory="../../mcumgr" />
+					<Add directory="$(#cb)/include" />
+					<Add directory="$(#wx.include)" />
+					<Add directory="$(#wx.lib)/gcc_dll/mswu" />
+					<Add directory="$(#cb)/sdk/wxscintilla/include" />
 				</Compiler>
+				<Linker>
+					<Add option="-Wl,--enable-auto-image-base" />
+					<Add option="-Wl,--export-all-symbols" />
+					<Add option="-Wl,--add-stdcall-alias" />
+					<Add option="-Wl,--enable-auto-import" />
+					<Add library="mcumgr" />
+					<Add library="wxmsw29u" />
+					<Add library="codeblocks" />
+					<Add directory="$(#cb)/devel29" />
+					<Add directory="$(#WX.lib)/gcc_dll$(WX_CFG)" />
+					<Add directory="$(#WX.lib)/gcc_dll$(WX_CFG)/msw$(WX_SUFFIX)" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="xcopy /Y generic.xml $(#cb.devdir)\share\CodeBlocks\plugins\mcudrv\" />
+				</ExtraCommands>
 				<Environment>
-					<Variable name="WX_SUFFIX" value="u" />
 					<Variable name="WX_CFG" value="" />
+					<Variable name="WX_SUFFIX" value="u" />
 				</Environment>
 			</Target>
 			<Environment>
-				<Variable name="WX_SUFFIX" value="u" />
 				<Variable name="WX_CFG" value="" />
+				<Variable name="WX_SUFFIX" value="u" />
 			</Environment>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add option="-pipe" />
-			<Add option="-mthreads" />
-			<Add option="-fmessage-length=0" />
-			<Add option="-fexceptions" />
-			<Add option="-Winvalid-pch" />
-			<Add option="-DBUILDING_PLUGIN" />
-			<Add option="-DHAVE_W32API_H" />
-			<Add option="-D__WXMSW__" />
-			<Add option="-DWXUSINGDLL" />
-			<Add option="-DcbDEBUG" />
-			<Add option="-DCB_PRECOMP" />
-			<Add option="-DWX_PRECOMP" />
-			<Add option="-DwxUSE_UNICODE" />
-			<Add option="-DWXMAKINGDLL_PROPGRID" />
-			<Add option="-DwxPG_USE_WXMODULE=0" />
-			<Add directory="..\..\mcumgr" />
-			<Add directory="$(#cb)\include" />
-			<Add directory="$(#wx.include)" />
-			<Add directory="$(#wx.lib)\gcc_dll\mswu" />
-			<Add directory="$(#cb)\sdk\wxscintilla\include" />
 		</Compiler>
-		<Linker>
-			<Add option="-Wl,--enable-auto-image-base" />
-			<Add option="-Wl,--export-all-symbols" />
-			<Add option="-Wl,--add-stdcall-alias" />
-			<Add option="-Wl,--enable-auto-import" />
-			<Add library="mcumgr" />
-			<Add library="wxmsw28u" />
-			<Add library="codeblocks" />
-			<Add directory="$(#cb)\devel" />
-			<Add directory="$(#WX.lib)\gcc_dll$(WX_CFG)" />
-			<Add directory="$(#WX.lib)\gcc_dll$(WX_CFG)\msw$(WX_SUFFIX)" />
-		</Linker>
-		<ExtraCommands>
-			<Add after="xcopy /Y generic.xml $(#cb)\devel\share\CodeBlocks\plugins\mcudrv\" />
-		</ExtraCommands>
 		<Unit filename="generic.cpp" />
 		<Unit filename="generic.h" />
 		<Unit filename="generic.xml" />

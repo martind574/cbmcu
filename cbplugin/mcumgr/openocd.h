@@ -33,6 +33,7 @@ public:
     OpenOCDDriver();
     virtual ~OpenOCDDriver();
 
+    virtual void OnNewProject(void);    // Called when new project created, to set project options etc
     virtual void OnOpenProject(void);   // Called when project opened, primarily to write config file
     virtual int Start(void);    // Start the remote driver
     virtual int Pause(void);    // Debug pause

@@ -11,9 +11,8 @@ class OpenOCDPlugin : public OpenOCDDriver
     public:
         OpenOCDPlugin();
         virtual ~OpenOCDPlugin();
-        //unsigned Dispatch(unsigned code, void *din, void *dout);
         int OnWriteConfigFile(wxFile &file);
-        //void DevSpecDlg();
+        void OnNewProject(cbProject *project);
         bool ReadConfigData();
 
         wxString m_FlashSize;

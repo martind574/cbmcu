@@ -120,6 +120,7 @@ class mcu : public cbPlugin
         virtual void OnRelease(bool appShutDown);
 
         void OnProjectLoadingHook(cbProject* project, TiXmlElement* elem, bool loading);
+        void OnProjectNew(CodeBlocksEvent &event);
         void OnProjectOpen(CodeBlocksEvent &event);
         void OnProjectSave(CodeBlocksEvent &event);
         void OnProjectClose(CodeBlocksEvent &event);
@@ -134,6 +135,7 @@ class mcu : public cbPlugin
         void OnMenuReset(wxCommandEvent& event);
         void OnMenuResetUpdate(wxUpdateUIEvent& event);
         void OnMenuProgram(wxCommandEvent& event);
+        void OnMenuNew(wxCommandEvent& event);
 
         int m_HookId;   // Project loader hook ID
         wxString m_Device;

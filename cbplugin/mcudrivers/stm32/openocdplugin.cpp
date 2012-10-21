@@ -83,3 +83,24 @@ bool OpenOCDPlugin::ReadConfigData()
 
     return true;
 }
+
+void OpenOCDPlugin::OnNewProject(cbProject *project)
+{
+    project->AddCompilerOption(_T("-mcpu=cortex-m3"));
+    project->AddCompilerOption(_T("-mthumb"));
+    project->AddCompilerOption(_T("-g"));
+    project->AddCompilerOption(_T("-Wall"));
+    project->AddCompilerOption(_T("-ffunction-sections"));
+    project->AddCompilerOption(_T("-fdata-sections"));
+
+    project->AddLinkerOption(_T("-Wl,--gc-sections"));
+    project->AddLinkerOption(_T("-nostartfiles"));
+
+    // Get output directory. */
+
+    // Library config.
+    project->AddCompilerOption(_T("-DUSE_STDPERIPH_DRIVER"));
+
+    // Add target for flash memory.
+    project->AddBuildTarget(_T("Flash"));
+}

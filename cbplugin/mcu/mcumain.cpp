@@ -11,6 +11,7 @@
 int idMenuSep = wxNewId();
 int idMenuReset = wxNewId();
 int idMenuProg = wxNewId();
+int idMenuNew = wxNewId();
 int idToolbarProg = XRCID("idProgram");
 
 // events handling
@@ -21,6 +22,7 @@ BEGIN_EVENT_TABLE(mcu, cbPlugin)
     EVT_UPDATE_UI(idMenuReset, mcu::OnMenuResetUpdate)
     EVT_MENU(idMenuProg, mcu::OnMenuProgram)
     EVT_MENU(idToolbarProg, mcu::OnMenuProgram)
+    //EVT_MENU(idMenuNew, mcu::OnMenuNew)
 END_EVENT_TABLE()
 
 // Register the plugin with Code::Blocks.
@@ -62,12 +64,13 @@ void mcu::OnAttach()
     ProjectLoaderHooks::HookFunctorBase* myhook = new ProjectLoaderHooks::HookFunctor<mcu>(this, &mcu::OnProjectLoadingHook);
     m_HookId = ProjectLoaderHooks::RegisterHook(myhook);
 
+    //Manager::Get()->RegisterEventSink(cbEVT_PROJECT_NEW, new cbEventFunctor<mcu, CodeBlocksEvent>(this, &mcu::OnProjectNew));
     Manager::Get()->RegisterEventSink(cbEVT_PROJECT_CLOSE, new cbEventFunctor<mcu, CodeBlocksEvent>(this, &mcu::OnProjectClose));
     Manager::Get()->RegisterEventSink(cbEVT_PROJECT_OPEN, new cbEventFunctor<mcu, CodeBlocksEvent>(this, &mcu::OnProjectOpen));
     Manager::Get()->RegisterEventSink(cbEVT_PROJECT_ACTIVATE, new cbEventFunctor<mcu, CodeBlocksEvent>(this, &mcu::OnProjectActivate));
     //Manager::Get()->RegisterEventSink(cbEVT_PROJECT_SAVE, new cbEventFunctor<mcu, CodeBlocksEvent>(this, &mcu::OnProjectSave));
     Manager::Get()->RegisterEventSink(cbEVT_DEBUGGER_STARTED, new cbEventFunctor<mcu, CodeBlocksEvent>(this, &mcu::OnStartDebug));
-    Manager::Get()->RegisterEventSink(cbEVT_DEBUGGER_PAUSED, new cbEventFunctor<mcu, CodeBlocksEvent>(this, &mcu::OnPauseDebug));
+    //Manager::Get()->RegisterEventSink(cbEVT_DEBUGGER_PAUSED, new cbEventFunctor<mcu, CodeBlocksEvent>(this, &mcu::OnPauseDebug));
     Manager::Get()->RegisterEventSink(cbEVT_DEBUGGER_FINISHED, new cbEventFunctor<mcu, CodeBlocksEvent>(this, &mcu::OnStopDebug));
 
     mcuPluginManager::GetInstance()->Attach();
@@ -85,7 +88,7 @@ void mcu::OnRelease(bool appShutDown)
 int mcu::Configure()
 {
     //create and display the configuration dialog for your plugin
-    cbConfigurationDialog dlg(Manager::Get()->GetAppWindow(), wxID_ANY, _("Your dialog title"));
+    cbConfigurationDialog dlg(Manager::Get()->GetAppWindow(), wxID_ANY, _("cbmcu"));
     cbConfigurationPanel* panel = GetConfigurationPanel(&dlg);
     if (panel)
     {
@@ -201,12 +204,32 @@ void mcu::OnProjectLoadingHook(cbProject* project, TiXmlElement* elem, bool load
     plgMan->OnProjectLoadingHook(project, elem, loading);
 }
 
+void mcu::OnProjectNew(CodeBlocksEvent &event)
+{
+    cbConfigurationDialog dlg(Manager::Get()->GetAppWindow(), wxID_ANY, _("Settings"));
+    cbConfigurationPanel* panel = GetProjectConfigurationPanel(&dlg, event.GetProject());
+    if (panel)
+    {
+        dlg.AttachConfigurationPanel(panel);
+        PlaceWindow(&dlg);
+        if (dlg.ShowModal() == wxID_OK) {
+
+            mcuDebugDriverManager *pDDM = mcuPluginManager::GetInstance()->GetDebugDriverManager();
+            pDDM->OnNewProject(event.GetProject());
+            event.SetInt(0);
+        }
+    }
+
+    // Indicate failure.
+    event.SetInt(-1);
+}
+
 void mcu::OnProjectOpen(CodeBlocksEvent &event)
 {
-    if (m_Device == _T("")) {
-        cbMessageBox(_T("No MCU set, please select a device."), _T("Warning"));
+    //if (m_Device == _T("")) {
+        //cbMessageBox(_T("No MCU set, please select a device."), _T("Warning"));
         //return;     // No device is set
-    }
+    //}
     /* OnProjectActivate will write config file. We won't call
     mcuPluginManager::GetInstance()->GetDebugDriverManager()->OnOpenProject() here as
     cbProject object not actually valid yet. */
