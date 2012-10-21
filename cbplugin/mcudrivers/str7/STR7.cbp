@@ -47,8 +47,8 @@
 				<ExtraCommands>
 					<Add after="xcopy /Y resources\STR7.xml $(#cb.devdir)\share\CodeBlocks\plugins\mcudrv\" />
 					<Add after="xcopy /Y resources\str710.cfg $(#cb.devdir)l\share\CodeBlocks\plugins\mcudrv\" />
-					<Add after="xcopy /Y resources\str730.cfg$(#cb.devdir)\share\CodeBlocks\plugins\mcudrv\" />
-					<Add after="xcopy /Y resources\str750.cfg$(#cb.devdir)\share\CodeBlocks\plugins\mcudrv\" />
+					<Add after="xcopy /Y resources\str730.cfg $(#cb.devdir)\share\CodeBlocks\plugins\mcudrv\" />
+					<Add after="xcopy /Y resources\str750.cfg $(#cb.devdir)\share\CodeBlocks\plugins\mcudrv\" />
 				</ExtraCommands>
 				<Environment>
 					<Variable name="WX_CFG" value="" />
