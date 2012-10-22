@@ -6,5 +6,6 @@
 		<Project filename="mcudrivers/stm32/STM32.cbp" />
 		<Project filename="mcudrivers/generic/generic.cbp" />
 		<Project filename="mcumgr/mcumgr.cbp" />
+		<Project filename="mcupm/mcupm.cbp" />
 	</Workspace>
 </CodeBlocks_workspace_file>

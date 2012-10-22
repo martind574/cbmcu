@@ -64,7 +64,7 @@ void mcu::OnAttach()
     ProjectLoaderHooks::HookFunctorBase* myhook = new ProjectLoaderHooks::HookFunctor<mcu>(this, &mcu::OnProjectLoadingHook);
     m_HookId = ProjectLoaderHooks::RegisterHook(myhook);
 
-    //Manager::Get()->RegisterEventSink(cbEVT_PROJECT_NEW, new cbEventFunctor<mcu, CodeBlocksEvent>(this, &mcu::OnProjectNew));
+    Manager::Get()->RegisterEventSink(cbEVT_PROJECT_NEW, new cbEventFunctor<mcu, CodeBlocksEvent>(this, &mcu::OnProjectNew));
     Manager::Get()->RegisterEventSink(cbEVT_PROJECT_CLOSE, new cbEventFunctor<mcu, CodeBlocksEvent>(this, &mcu::OnProjectClose));
     Manager::Get()->RegisterEventSink(cbEVT_PROJECT_OPEN, new cbEventFunctor<mcu, CodeBlocksEvent>(this, &mcu::OnProjectOpen));
     Manager::Get()->RegisterEventSink(cbEVT_PROJECT_ACTIVATE, new cbEventFunctor<mcu, CodeBlocksEvent>(this, &mcu::OnProjectActivate));
@@ -171,7 +171,8 @@ void mcu::OnProjectLoadingHook(cbProject* project, TiXmlElement* elem, bool load
 {
     mcuPluginManager *plgMan = mcuPluginManager::GetInstance();
 
-    if (loading) {
+    if (loading)
+	{
         TiXmlElement* node = elem->FirstChildElement("mcu");
         if (node) {
             TiXmlElement *device = node->FirstChildElement("device");
@@ -187,7 +188,9 @@ void mcu::OnProjectLoadingHook(cbProject* project, TiXmlElement* elem, bool load
             m_Family = _T("");
             m_Device = _T("");
         }
-    } else {
+    }
+    else
+	{
         if (plgMan->GetMicro(m_Device, m_Family) == true) {
 
             TiXmlElement* node = elem->FirstChildElement("mcu");
@@ -208,6 +211,7 @@ void mcu::OnProjectNew(CodeBlocksEvent &event)
 {
     cbConfigurationDialog dlg(Manager::Get()->GetAppWindow(), wxID_ANY, _("Settings"));
     cbConfigurationPanel* panel = GetProjectConfigurationPanel(&dlg, event.GetProject());
+
     if (panel)
     {
         dlg.AttachConfigurationPanel(panel);

@@ -21,9 +21,10 @@ STM32::~STM32()
     //dtor
 }
 
-/*
-    \brief Called when mcumgr loads this plugin
-*/
+/** \brief This is called when the mcu manager loads this plugin
+ *
+ * From here we instantiate the one and only mcuDebugDriverManager object.
+ */
 void STM32::OnAttach()
 {
     // Register our driver object
@@ -31,6 +32,10 @@ void STM32::OnAttach()
     pDDM->RegisterDriver(&m_ocd);
 }
 
+/** \brief This is called when the mcu manager unloads this plugin
+ *
+ * From here we instantiate the one and only mcuDebugDriverManager object.
+ */
 void STM32::OnDetach()
 {
     // We don't really have to do this..

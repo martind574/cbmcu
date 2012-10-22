@@ -49,7 +49,8 @@ void mcuPluginManager::Attach()
 
 bool mcuPluginManager::Close()
 {
-    if (m_pPlugin) {
+    if (m_pPlugin)
+	{
         m_pPlugin->OnDetach();
         m_mcuName = _T("");
         m_family = _T("");

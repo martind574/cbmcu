@@ -114,6 +114,15 @@ If GDB fails, OpenOCD does not exit.]]>
 					<wxDialog wxs="wxsmith/DevParportAdvOpts.wxs" src="devparportadvopts.cpp" hdr="devparportadvopts.h" fwddecl="0" i18n="1" name="DevParportAdvOpts" language="CPP" />
 				</resources>
 			</wxsmith>
+			<DoxyBlocks>
+				<comment_style block="0" line="0" />
+				<doxyfile_project />
+				<doxyfile_build />
+				<doxyfile_warnings />
+				<doxyfile_output />
+				<doxyfile_dot />
+				<general />
+			</DoxyBlocks>
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
