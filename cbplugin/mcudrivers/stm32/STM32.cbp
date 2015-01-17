@@ -63,6 +63,8 @@
 		<Unit filename="openocdplugin.h" />
 		<Unit filename="resources/STM32.xml" />
 		<Unit filename="resources/stm32.cfg" />
+		<Unit filename="stm32confdriver.cpp" />
+		<Unit filename="stm32confdriver.h" />
 		<Unit filename="wxsmith/STM32GeneralOptions.wxs" />
 		<Extensions>
 			<code_completion />

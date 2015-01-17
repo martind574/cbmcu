@@ -54,7 +54,7 @@ bool mcuPluginManager::Close()
         m_pPlugin->OnDetach();
         m_mcuName = _T("");
         m_family = _T("");
-        m_DebugDriverManager.RegisterDriver(NULL);  // Just in case plugin didnt do it
+        m_DebugDriverManager.RegisterDebugDriver(NULL);  // Just in case plugin didnt do it
         return UnloadPlugin();
     }
     return false;

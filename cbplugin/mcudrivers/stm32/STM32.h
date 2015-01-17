@@ -15,6 +15,7 @@ class STM32 : public mcuPlugin
         virtual void OnSetDevice(const wxString &part);
         virtual void OnConfigSettings(ConfigSettingsPanel *panel);
         virtual bool OnConfigApply(void);
+        void OnProjectNew(cbProject *project);
 
         // Static OpenOCD instance
         static OpenOCDPlugin m_ocd;   // The singleton

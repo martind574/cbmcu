@@ -5,6 +5,7 @@
 #include <wx/dynlib.h>
 #include "tinyxml/tinyxml.h"
 
+#include "configtargetdriver.h"
 #include "mcuplugin.h"
 #include "mcuconfigmanager.h"
 #include "mcudebugdrivermanager.h"

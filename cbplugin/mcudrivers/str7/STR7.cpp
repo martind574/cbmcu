@@ -29,14 +29,14 @@ void STR7::OnAttach()
 {
     // Register our driver object
     mcuDebugDriverManager *pDDM = mcuPluginManager::GetInstance()->GetDebugDriverManager();
-    pDDM->RegisterDriver(&m_ocd);
+    pDDM->RegisterDebugDriver(&m_ocd);
 }
 
 void STR7::OnDetach()
 {
     // We don't really have to do this..
     mcuDebugDriverManager *pDDM = mcuPluginManager::GetInstance()->GetDebugDriverManager();
-    pDDM->RegisterDriver(NULL);
+    pDDM->RegisterDebugDriver(NULL);
 }
 
 void STR7::OnSetDevice(const wxString &part)

@@ -214,7 +214,7 @@ int OpenOCDDriver::Launch(void)
     Set some compiler options.
 */
 
-void OpenOCDDriver::OnNewProject(void)
+void OpenOCDDriver::OnNewProject(cbProject *project)
 {
     if (m_Auto == true) {
 

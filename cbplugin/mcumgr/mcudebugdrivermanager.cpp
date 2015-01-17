@@ -74,7 +74,7 @@ int mcuDebugDriverManager::Program()
     return false;
 }
 
-void mcuDebugDriverManager::RegisterDriver(GDBRemoteTargetDriver *pDriver)
+void mcuDebugDriverManager::RegisterDebugDriver(GDBRemoteTargetDriver *pDriver)
 {
     m_pGDBTarg = pDriver;
 }

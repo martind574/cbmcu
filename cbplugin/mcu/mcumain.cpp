@@ -207,6 +207,15 @@ void mcu::OnProjectLoadingHook(cbProject* project, TiXmlElement* elem, bool load
     plgMan->OnProjectLoadingHook(project, elem, loading);
 }
 
+/** \brief Called when a new project is created.
+ *
+ * We need to call the relevant MCU driver routine.
+ *
+ * \param
+ * \param
+ * \return
+ *
+ */
 void mcu::OnProjectNew(CodeBlocksEvent &event)
 {
     cbConfigurationDialog dlg(Manager::Get()->GetAppWindow(), wxID_ANY, _("Settings"));
@@ -218,14 +227,12 @@ void mcu::OnProjectNew(CodeBlocksEvent &event)
         PlaceWindow(&dlg);
         if (dlg.ShowModal() == wxID_OK) {
 
-            mcuDebugDriverManager *pDDM = mcuPluginManager::GetInstance()->GetDebugDriverManager();
-            pDDM->OnNewProject(event.GetProject());
-            event.SetInt(0);
-        }
+            //mcuPluginManager::GetInstance()->OnProjectNew(event.GetProject());
+		}
+    } else {
+		// Indicate failure.
+		event.SetInt(-1);
     }
-
-    // Indicate failure.
-    event.SetInt(-1);
 }
 
 void mcu::OnProjectOpen(CodeBlocksEvent &event)

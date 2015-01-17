@@ -65,6 +65,8 @@ If GDB fails, OpenOCD does not exit.]]>
 		<Unit filename="configsettingsdialog.h" />
 		<Unit filename="configsettingspanel.cpp" />
 		<Unit filename="configsettingspanel.h" />
+		<Unit filename="configtargetdriver.cpp" />
+		<Unit filename="configtargetdriver.h" />
 		<Unit filename="devparportadvopts.cpp" />
 		<Unit filename="devparportadvopts.h" />
 		<Unit filename="mcuconfigmanager.cpp" />

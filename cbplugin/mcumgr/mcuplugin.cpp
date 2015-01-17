@@ -1,3 +1,6 @@
+#include <sdk.h> // Code::Blocks SDK
+
+#include "configtargetdriver.h"
 #include "mcupluginmanager.h"
 #include "mcuplugin.h"
 
@@ -23,3 +26,8 @@ bool mcuPlugin::OnConfigApply(void)
 {
     return true;
 }
+
+void mcuPlugin::OnProjectNew(cbProject *project)
+{
+}
+

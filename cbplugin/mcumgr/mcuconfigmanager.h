@@ -11,6 +11,12 @@ class mcuConfigManager
         mcuConfigManager();
         virtual ~mcuConfigManager();
 
+        ConfigTargetDriver *m_pCFD;		// Pointer to configuration target driver object
+
+		// Functions to register/unregister target config driver
+		void RegisterConfigDriver(ConfigTargetDriver *pCFD);
+		void UnregisterConfigDriver();
+
         // For enumeration / searching of config XML files
         bool StartDFEnum(const wxString &path);
         bool EndDFEnum(void);
@@ -18,7 +24,6 @@ class mcuConfigManager
         TiXmlDocument *getXMLDoc() { return m_pDoc; }
         TiXmlDocument *OpenConfigFile();
         TiXmlElement *FindTarget();
-
         bool CloseConfigFile();
 
         // Variables

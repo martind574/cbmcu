@@ -27,9 +27,10 @@ STM32::~STM32()
  */
 void STM32::OnAttach()
 {
-    // Register our driver object
+    // Register our driver objects
     mcuDebugDriverManager *pDDM = mcuPluginManager::GetInstance()->GetDebugDriverManager();
-    pDDM->RegisterDriver(&m_ocd);
+    pDDM->RegisterDebugDriver(&m_ocd);
+
 }
 
 /** \brief This is called when the mcu manager unloads this plugin
@@ -40,8 +41,9 @@ void STM32::OnDetach()
 {
     // We don't really have to do this..
     mcuDebugDriverManager *pDDM = mcuPluginManager::GetInstance()->GetDebugDriverManager();
-    pDDM->RegisterDriver(NULL);
+    pDDM->RegisterDebugDriver(NULL);
 }
+
 void STM32::OnSetDevice(const wxString &part)
 {
     // Get micro configuration options
@@ -60,3 +62,25 @@ bool STM32::OnConfigApply(void)
 {
     return false;
 }
+
+void STM32::OnProjectNew(cbProject *project)
+{
+	project->AddCompilerOption(_T("-mcpu=cortex-m3"));
+    project->AddCompilerOption(_T("-mthumb"));
+    project->AddCompilerOption(_T("-g"));
+    project->AddCompilerOption(_T("-Wall"));
+    project->AddCompilerOption(_T("-ffunction-sections"));
+    project->AddCompilerOption(_T("-fdata-sections"));
+
+    project->AddLinkerOption(_T("-Wl,--gc-sections"));
+    project->AddLinkerOption(_T("-nostartfiles"));
+
+    // Get output directory. */
+
+    // Library config.
+    project->AddCompilerOption(_T("-DUSE_STDPERIPH_DRIVER"));
+
+    // Add target for flash memory.
+    project->AddBuildTarget(_T("Flash"));
+}
+

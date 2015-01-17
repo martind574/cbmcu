@@ -1,3 +1,4 @@
+#include "configtargetdriver.h"
 #include "mcupluginmanager.h"
 
 static const wxString McuDescFileMask = _T("*.xml");
@@ -10,6 +11,16 @@ mcuConfigManager::mcuConfigManager()
 mcuConfigManager::~mcuConfigManager()
 {
     //dtor
+}
+
+void mcuConfigManager::RegisterConfigDriver(ConfigTargetDriver *pCFD)
+{
+	m_pCFD = pCFD;
+}
+
+void mcuConfigManager::UnregisterConfigDriver()
+{
+	m_pCFD = NULL;
 }
 
 bool mcuConfigManager::StartDFEnum(const wxString &path)
